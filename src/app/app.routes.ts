@@ -5,8 +5,8 @@ import { FormComponent } from './components/layout/form/form.component';
 import { ResultComponent } from './components/layout/result/result.component';
 
 export const routes: Routes = [
-    {path: "", component: HomeComponent},
-    {path: "login", component: LoginComponent},
-    {path: "form", component: FormComponent },
-    {path: "result", component: ResultComponent }
+  { path: '', component: HomeComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'form', component: FormComponent },
+  { path: 'result', component: ResultComponent },
 ];

@@ -7,6 +7,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideClientHydration } from '@angular/platform-browser';
 import { GoogleInitOptions, GoogleLoginProvider, SocialAuthServiceConfig } from '@abacritt/angularx-social-login';
 import { environment } from './environments/enviroment';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 const googleLoginOptions: GoogleInitOptions = {
   oneTapEnabled: false, // default is true
@@ -33,6 +34,6 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideAnimations(),
-    provideHttpClient(withFetch())
+    provideHttpClient(withFetch()), provideAnimationsAsync()
   ]
 };
