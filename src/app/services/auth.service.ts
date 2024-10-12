@@ -52,28 +52,6 @@ export class AuthService {
     return this.http.post<AuthDTO>(`${this.apiUrl}/auth/login`,payload, {responseType: 'json'});
   }
 
-
-
-  public socialLogin(id_token: string) {
-    console.log('ID token from Google: ', id_token)
-    const loginUrl = `${this.apiUrl}/auth/login`;
-        const payload = {
-      "idToken": id_token
-    }
-    return this.http.post(loginUrl, payload, {responseType: 'text' as 'json'}).pipe(
-      tap((res: any) => {
-        console.log('res = ', res)
-        const access_token = res;
-        if(access_token){
-            localStorage.setItem('access_token', access_token); //MUITO IMPORTANTE
-          }
-      }),
-      catchError((error: HttpErrorResponse) => {
-        return throwError(() => error);
-      })
-    );
-  }
-
   logout() {
     return localStorage.clear();
   }

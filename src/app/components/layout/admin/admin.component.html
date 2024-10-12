@@ -1,0 +1,39 @@
+<header>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-white fixed-top">
+      <div class="container-fluid">
+        <button
+          class="navbar-toggler"
+          type="button"
+          (click)="fixedNavbarExample.toggle()"
+          aria-controls="fixedNavbarExample"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <i class="fas fa-bars"></i>
+        </button>
+        <div
+          mdbCollapse
+          #fixedNavbarExample="mdbCollapse"
+          class="collapse navbar-collapse"
+          id="fixedNavbarExample"
+        >
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item active">
+              <a class="nav-link" aria-current="page" href="#">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="admin/exercise">Exercises</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <!-- Navbar -->
+  
+    <!-- Jumbotron -->
+    <div style="margin-top: 58px;">
+        <router-outlet></router-outlet>
+    </div>
+    <!-- Jumbotron -->
+  </header>

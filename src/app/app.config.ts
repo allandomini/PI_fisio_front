@@ -17,23 +17,22 @@ const googleLoginOptions: GoogleInitOptions = {
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideAnimations(),
     {
-      provide: 'SocialAuthServiceConfig',
-      useValue: {
-        autoLogin: false,
-        providers: [
-          {
-            id: GoogleLoginProvider.PROVIDER_ID,
-            provider: new GoogleLoginProvider(environment.GOOGLE_CLIENT_ID, googleLoginOptions)
-          },
-        ],
-        onError: (err: any) => {
-          console.error(err);
-        }
-      } as SocialAuthServiceConfig,
+        provide: 'SocialAuthServiceConfig',
+        useValue: {
+            autoLogin: false,
+            providers: [
+                {
+                    id: GoogleLoginProvider.PROVIDER_ID,
+                    provider: new GoogleLoginProvider(environment.GOOGLE_CLIENT_ID, googleLoginOptions)
+                },
+            ],
+            onError: (err: any) => {
+                console.error(err);
+            }
+        } as SocialAuthServiceConfig,
     },
     provideRouter(routes),
     provideClientHydration(),
     provideAnimations(),
-    provideHttpClient(withFetch()), provideAnimationsAsync()
-  ]
+    provideHttpClient(withFetch()), provideAnimationsAsync(), provideAnimations()]
 };

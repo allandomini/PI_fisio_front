@@ -1,0 +1,71 @@
+<div class="d-grid d-md-flex justify-content-md-end pb-3 pt-1 px-2">
+  <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="newModal()">
+    new
+  </button>
+</div>
+<div class="table-responsive">
+  <table class="table table-bordered">
+    <thead class="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Video Url</th>
+        <th>Name</th>
+        <th>Description</th>
+        <th>Reps</th>
+        <th>Intensity</th>
+        <th>Joint</th>
+        <th colspan="2" class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (e of exercises; track $index) {
+      <tr>
+        <td>{{ e.id }}</td>
+        <td>
+          <a href="{{ e.videoUrl }}">{{ e.videoUrl }}</a>
+        </td>
+        <td>{{ e.name }}</td>
+        <td>{{ e.description }}</td>
+        <td>{{ e.reps }}</td>
+        <td>{{ e.intensity }}</td>
+        <td>{{ e.joint }}</td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-link btn-rounded btn-sm fw-bold"
+            mdbRipple
+            rippleColor="dark"
+          >
+            Edit
+          </button>
+        </td>
+        <td>
+          <button
+            type="button"
+            class="btn btn-link btn-rounded btn-sm fw-bold"
+            mdbRipple
+            rippleColor="dark"
+          >
+            Delete
+          </button>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalExerciseDetails>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-exercisedetails></app-exercisedetails>
+  </div>
+</ng-template>
