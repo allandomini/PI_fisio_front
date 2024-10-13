@@ -35,20 +35,9 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
   styleUrl: './exercisedetails.component.scss',
 })
 export class ExercisedetailsComponent {
-  @Input('exercise') exercise: Exercise = new Exercise(
-    0,
-    '',
-    '',
-    '',
-    '',
-    null,
-    null
-  );
+  @Input('exercise') exercise: Exercise = new Exercise(0, '', '', '', '', null, null);
   @Output('return') return = new EventEmitter<any>();
-
-  exerciseForm: FormGroup;
-
-
+  
   // Objetos utilizados nos selects.
   intensityOptions = Object.keys(Intensity).map((key) => ({
     value: Intensity[key as keyof typeof Intensity],
@@ -60,30 +49,12 @@ export class ExercisedetailsComponent {
     viewValue: Joint[key as keyof typeof Joint],
   }));
 
-  intensityControl = new FormControl(
-    this.exercise.intensity,
-    Validators.required
-  );
+  intensityControl = new FormControl(this.exercise.intensity, Validators.required);
   jointControl = new FormControl(this.exercise.joint, Validators.required);
   // --
 
-  save() {
-    this.exerciseForm.markAllAsTouched();
 
-        // Verifica se todos os campos obrigatorios estao preenchidos
-        if (!this.exercise.name || !this.exercise.description || !this.exercise.reps || !this.exercise.videoUrl || !this.intensityControl.value || !this.jointControl.value) {
-          return;
-      }
-    // Cadastro Editado
-    if (this.exercise.id > 0) {
-      alert('Carro editado com sucesso!');
-    } else {
-      // Cadastro novo
-      alert('Carro salvo com sucesso!');
-    }
-    this.return.emit(this.exercise);
-  }
-
+  exerciseForm: FormGroup;
 
   constructor() {
     this.exerciseForm = new FormGroup({
@@ -117,6 +88,17 @@ export class ExercisedetailsComponent {
     });
     // --
   }
+
+  save() {
+    this.exerciseForm.markAllAsTouched();
+
+      // Verifica se todos os campos obrigatorios estao preenchidos
+      if (!this.exercise.name || !this.exercise.description || !this.exercise.reps || !this.exercise.videoUrl || !this.intensityControl.value || !this.jointControl.value) {
+          return;
+      }
+    this.return.emit(this.exercise);
+  }
+
 
   get name() {
     return this.exerciseForm.get('name');

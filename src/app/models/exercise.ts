@@ -5,7 +5,7 @@ export class Exercise {
         public description: string,
         public reps: string,
         public videoUrl: string,
-        public intensity: Intensity | null,
+        public intensity: Intensity |   null,
         public joint: Joint | null
     ) {}
 }
