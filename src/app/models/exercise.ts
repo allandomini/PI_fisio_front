@@ -1,31 +1,14 @@
 export class Exercise {
-    id!: number;
-    name!: String;
-    description!: String;
-    reps!: String;
-    intensity!: Intensity;
-    joint!: Joint;
-    videoUrl!: String;
-
     constructor(
-        id: number,
-        name: string,
-        description: string,
-        reps: string,
-        intensity: Intensity,
-        joint: Joint,
-        videoUrl: string
-    ) {
-        this.id = id;
-        this.description = description;
-        this.intensity = intensity;
-        this.joint = joint;
-        this.name = name;
-        this.reps = reps;
-        this.videoUrl = videoUrl;
-    }
+        public id: number,
+        public name: string,
+        public description: string,
+        public reps: string,
+        public videoUrl: string,
+        public intensity: Intensity | null,
+        public joint: Joint | null
+    ) {}
 }
-
 
 export enum Intensity {
     High = 'HIGH',

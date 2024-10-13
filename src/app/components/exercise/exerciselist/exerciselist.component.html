@@ -1,4 +1,4 @@
-<div class="d-grid d-md-flex justify-content-md-end pb-3 pt-1 px-2">
+<div class="d-grid d-md-flex justify-content-md-end pb-3 pt-1 p pt-md-0 px-2">
   <button type="button" class="btn btn-primary btn-rounded" mdbRipple (click)="newModal()">
     new
   </button>
@@ -22,7 +22,7 @@
       <tr>
         <td>{{ e.id }}</td>
         <td>
-          <a href="{{ e.videoUrl }}">{{ e.videoUrl }}</a>
+          <a href="{{ e.videoUrl }}" target="_blank">{{ e.videoUrl }}</a>
         </td>
         <td>{{ e.name }}</td>
         <td>{{ e.description }}</td>
@@ -35,6 +35,7 @@
             class="btn btn-link btn-rounded btn-sm fw-bold"
             mdbRipple
             rippleColor="dark"
+            (click)="edit(e)"
           >
             Edit
           </button>
@@ -45,6 +46,7 @@
             class="btn btn-link btn-rounded btn-sm fw-bold"
             mdbRipple
             rippleColor="dark"
+            (click)="deleteById(e.id)"
           >
             Delete
           </button>
@@ -57,7 +59,7 @@
 
 <ng-template #modalExerciseDetails>
   <div class="modal-header">
-    <h5 class="modal-title" id="exampleModalLabel">Cadastro</h5>
+    <h5 class="modal-title" id="exampleModalLabel"></h5>
     <button
       type="button"
       class="btn-close"
@@ -66,6 +68,6 @@
     ></button>
   </div>
   <div class="modal-body">
-    <app-exercisedetails></app-exercisedetails>
+    <app-exercisedetails [exercise]="exerciseEdit" (return)="returnDetail($event)"></app-exercisedetails>
   </div>
 </ng-template>
