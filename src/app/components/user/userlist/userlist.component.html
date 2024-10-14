@@ -1,0 +1,58 @@
+<div class="table-responsive">
+<table class="table table-bordered align-middle mb-0 bg-white">
+    <thead class="table-light">
+      <tr>
+        <th>Id</th>
+        <th>Name</th>
+        <th>Role</th>
+        <th>Courses</th>
+        <th>Pain Joint & Intensity</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (user of users; track $index) {
+      <tr>
+        <td>{{user.id}}</td>
+        <td>
+          <div class="d-flex align-items-center">
+            <img
+                src=""
+                alt=""
+                style="width: 45px; height: 45px"
+                class="rounded-circle"
+                />
+            <div class="ms-3">
+              <p class="fw-bold mb-1">{{user.name}}</p>
+              <p class="text-muted mb-0">{{user.email}}</p>
+            </div>
+          </div>
+        </td>
+        <td>
+          ADMIN
+        </td>
+        <td >
+          <div class="d-flex gap-2 align-items-center "> 
+            @for (course of user.courses; track $index) {
+          <span class="badge rounded-pill badge-primary fs-7">
+            {{course}}
+          </span>
+        }  
+        </div>        
+        </td>
+
+        <td>
+          <div class="d-flex gap-2 align-items-center ">
+            @for (jointIntensity of user.jointIntensities; track $index) {
+              <span class="badge rounded-pill fs-7"
+              [ngClass]="getBadgeClass(jointIntensity)"
+              >
+                {{jointIntensity.joint}} - {{jointIntensity.intensity}} 
+              </span>
+            }     
+        </div>
+        </td>
+      </tr>
+    }
+    </tbody>
+  </table>
+</div>

@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { ExerciselistComponent } from '../exerciselist/exerciselist.component';
 
-
 @Component({
-  selector: 'app-exercisecrud',
+  selector: 'app-exercisemanagement',
   standalone: true,
   imports: [ExerciselistComponent],
-  templateUrl: './exercisecrud.component.html',
-  styleUrl: './exercisecrud.component.scss'
+  templateUrl: './exercisemanagement.component.html',
+  styleUrl: './exercisemanagement.component.scss'
 })
-export class ExercisecrudComponent {}
+export class ExerciseManagementComponent {
+
+}

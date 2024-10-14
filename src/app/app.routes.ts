@@ -4,8 +4,9 @@ import { LoginComponent } from './components/layout/login/login.component';
 import { FormComponent } from './components/layout/form/form.component';
 import { ResultComponent } from './components/layout/result/result.component';
 import { AdminComponent } from './components/layout/admin/admin.component';
-import { ExercisecrudComponent } from './components/exercise/exercisecrud/exercisecrud.component';
 import { AdminGuard } from './guard/admin.guard';
+import { ExerciseManagementComponent } from './components/exercise/exercisemanagement/exercisemanagement.component';
+import { UserManagementComponent } from './components/user/usermanagement/usermanagement.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -14,7 +15,8 @@ export const routes: Routes = [
   { path: 'result', component: ResultComponent },
   {path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
     children:[
-      {path: 'exercise', component: ExercisecrudComponent}
+      {path: 'exercise', component: ExerciseManagementComponent},
+      {path: 'user', component: UserManagementComponent}
     ]
   },
   {path: '**', redirectTo: ''}
