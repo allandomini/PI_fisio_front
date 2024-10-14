@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { environment } from '../environments/enviroment';
 import { AuthDTO } from '../models/auth-dto';
+import { jwtDecode, JwtPayload } from 'jwt-decode';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -14,15 +16,15 @@ export class AuthService {
 
   constructor(private http: HttpClient) { }
 
-  public getAuthorizationHeader(): HttpHeaders {
-    const authToken = this.getAccessToken();
-    return new HttpHeaders({ Authorization: `JWT ${authToken}` });
-  }
+  // public getAuthorizationHeader(): HttpHeaders {
+  //   const authToken = this.getAccessToken();
+  //   return new HttpHeaders({ Authorization: `JWT ${authToken}` });
+  // }
 
-  private getAccessToken(){
+  public getAccessToken(){
     return localStorage.getItem(this.access_token);
   }
-  private getRefreshToken(){
+  public getRefreshToken(){
     return localStorage.getItem(this.refresh_token);
   }
 
@@ -44,7 +46,7 @@ export class AuthService {
    * @returns HttpClient `Observable`
    */
 
-  logar(idToken: string): Observable<AuthDTO> {
+  login(idToken: string): Observable<AuthDTO> {
     console.log('ID token from Google: ', idToken)
     const payload = {
       "idToken": idToken
@@ -56,4 +58,20 @@ export class AuthService {
     return localStorage.clear();
   }
 
+  jwtDecode(){
+    let token = this.getAccessToken();
+    if(token){
+      return jwtDecode<JwtPayload>(token)
+    }else
+    return ""
+  }
+
+  hasPermission(role: String){
+    let user = this.jwtDecode() as User;
+    // console.log(user)
+    if(user.role == role)
+      return true
+    else
+      return false
+  }
 }

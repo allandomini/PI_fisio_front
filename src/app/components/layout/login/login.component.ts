@@ -20,10 +20,12 @@ import { AuthDTO } from '../../../models/auth-dto';
   styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
-  constructor(private socialAuth: SocialAuthService, private authService: AuthService, private route: Router) { }
+  constructor(private socialAuth: SocialAuthService, private authService: AuthService, private route: Router) { 
+    authService.logout();
+  }
   ngOnInit() {
     this.socialAuth.authState.subscribe((res: any) => {
-      this.authService.logar(res.idToken)
+      this.authService.login(res.idToken)
         .subscribe({
           next: (auth: AuthDTO) => {
             console.log('AccessToken: ', auth.accessToken)

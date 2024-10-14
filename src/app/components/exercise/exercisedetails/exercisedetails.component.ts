@@ -37,7 +37,7 @@ import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 export class ExercisedetailsComponent {
   @Input('exercise') exercise: Exercise = new Exercise(0, '', '', '', '', null, null);
   @Output('return') return = new EventEmitter<any>();
-  
+
   // Objetos utilizados nos selects.
   intensityOptions = Object.keys(Intensity).map((key) => ({
     value: Intensity[key as keyof typeof Intensity],
@@ -52,8 +52,7 @@ export class ExercisedetailsComponent {
   intensityControl = new FormControl(this.exercise.intensity, Validators.required);
   jointControl = new FormControl(this.exercise.joint, Validators.required);
   // --
-
-
+  
   exerciseForm: FormGroup;
 
   constructor() {
