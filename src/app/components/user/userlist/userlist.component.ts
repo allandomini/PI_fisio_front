@@ -1,10 +1,12 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ExercisedetailsComponent } from '../../exercise/exercisedetails/exercisedetails.component';
 import { JointIntensity, User } from '../../../models/user';
 import { Intensity, Joint } from '../../../models/exercise';
 import { NgClass } from '@angular/common';
+import { UserService } from '../../../services/user.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-userlist',
@@ -15,23 +17,23 @@ import { NgClass } from '@angular/common';
 })
 export class UserlistComponent {
   users: User[] = [];
-  user1: User = new User(
-    1,
-    'Pedro Henrique',
-    'email@email.com',
-    'ADMIN',
-    'https://mdbootstrap.com/img/new/avatars/8.jpg',
-    ['6ºB', '8ºC', '7ºA'],
-    [
-      new JointIntensity(Joint.Shoulder, Intensity.High),
-      new JointIntensity(Joint.Knee, Intensity.Low),
-      new JointIntensity(Joint.Cervical, Intensity.Medium),
-    ]
-  );
+  userService = inject(UserService);
+  snackBar = inject(MatSnackBar);
+
   constructor(){
-    this.users.push(this.user1);
+    this.listAll();
   }
 
+  listAll(){
+    this.userService.findAll().subscribe({
+      next: users =>{
+        this.users = users;
+      },
+      error: error =>{
+        this.openSnackBar(error.error,'Close')
+      }
+    })
+  }
   getBadgeClass(jointIntensity: JointIntensity): string {
     switch (jointIntensity.intensity) {
       case Intensity.High:
@@ -43,5 +45,8 @@ export class UserlistComponent {
       default:
         return '';
     }
+}
+openSnackBar(message: string, action: string) {
+  this.snackBar.open(message, action, {});
 }
 }
