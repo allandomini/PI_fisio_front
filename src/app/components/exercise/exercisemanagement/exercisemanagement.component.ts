@@ -105,7 +105,7 @@ export class ExerciseManagementComponent {
     };
     // debounce para nao fazer uma requisiçao a cada letra digitada / opçao selecionada
     this.debounceTimeout = setTimeout(() => {
-      this.refresh(); //
+      this.refresh({length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize }); // arrumar aquii tinha que ter um representante do MatPaginator no TS :D daqui coloca aq dentro kk huehue
     }, 500);
   }
 

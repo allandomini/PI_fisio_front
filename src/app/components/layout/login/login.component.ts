@@ -23,6 +23,7 @@ export class LoginComponent implements OnInit {
   constructor(private socialAuth: SocialAuthService, private authService: AuthService, private route: Router) { 
     authService.logout();
   }
+  
   ngOnInit() {
     this.socialAuth.authState.subscribe((res: any) => {
       this.authService.login(res.idToken)
