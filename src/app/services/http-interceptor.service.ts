@@ -32,7 +32,7 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
           authService.refresh(refresh_token).subscribe({
               next: a  => {
                 authService.setAuthToken({accessToken: a.accessToken, refreshToken: a.refreshToken});
-                // window.location.reload()
+                window.location.reload()
               },
               error: err =>{
                 authService.logout();
