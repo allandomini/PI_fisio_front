@@ -121,7 +121,7 @@ export class ExerciseManagementComponent {
           this.exercises = exercisePage.exercises;
         },
         error: (error) => {
-          this.openSnackBar(error.error, 'Close');
+          this.openSnackBar(error.error || error.error, 'Close');
         },
       });
   }

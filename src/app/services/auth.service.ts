@@ -14,12 +14,10 @@ export class AuthService {
   private readonly access_token = 'access_token';
   private readonly refresh_token = 'refresh_token';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) { 
 
-  // public getAuthorizationHeader(): HttpHeaders {
-  //   const authToken = this.getAccessToken();
-  //   return new HttpHeaders({ Authorization: `JWT ${authToken}` });
-  // }
+
+  }
 
   public getAccessToken(){
     return localStorage.getItem(this.access_token);
@@ -54,12 +52,23 @@ export class AuthService {
     return this.http.post<AuthDTO>(`${this.apiUrl}/auth/login`,payload, {responseType: 'json'});
   }
 
-  logout() {
-    return localStorage.clear();
+  refresh(refreshToken: string): Observable<AuthDTO>{{}
+  const token = this.getRefreshToken();
+  const payload = {
+    "refreshToken": token
+  }
+  return this.http.post<AuthDTO>(`${this.apiUrl}/auth/refreshToken`,payload, {responseType: 'json'});
+
   }
 
-  jwtDecode(){
-    let token = this.getAccessToken();
+  logout() {
+    localStorage.removeItem(this.access_token)
+    localStorage.removeItem(this.refresh_token)
+
+    // return localStorage.clear();
+  }
+
+  jwtDecode(token: string){
     if(token){
       return jwtDecode<JwtPayload>(token)
     }else
@@ -67,7 +76,7 @@ export class AuthService {
   }
 
   hasPermission(role: String){
-    let user = this.jwtDecode() as User;
+    let user = this.jwtDecode(this.getAccessToken() || '') as User;
     // console.log(user)
     if(user.role == role)
       return true

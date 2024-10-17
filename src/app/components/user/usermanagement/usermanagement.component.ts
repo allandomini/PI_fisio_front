@@ -29,7 +29,6 @@ export class UserManagementComponent {
     this.listAll();
    }
 
-
   listAll(pageEvent: PageEvent = { length: 0, pageIndex: 0, pageSize: 5 }){
     this.userService.findAll(pageEvent.pageIndex, pageEvent.pageSize)
     .subscribe({
