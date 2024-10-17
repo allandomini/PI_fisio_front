@@ -1,0 +1,32 @@
+.container-principal {
+  background-color: #E2DCD1;
+  width: 20rem;
+  height: 36rem;
+}
+
+.card-body {
+  padding: 0;
+}
+
+#button-entrar {
+  background-color: #785946;
+  width: 97%;
+  
+
+}
+
+.btn-primary {
+  --mdb-btn-box-shadow: none;
+}
+
+.btn-primary:hover {
+  --mdb-btn-box-shadow: none;
+}
+
+h3 {
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #333333;
+}

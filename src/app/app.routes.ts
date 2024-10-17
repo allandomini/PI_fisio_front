@@ -7,9 +7,11 @@ import { AdminComponent } from './components/layout/admin/admin.component';
 import { AdminGuard } from './guard/admin.guard';
 import { ExerciseManagementComponent } from './components/exercise/exercisemanagement/exercisemanagement.component';
 import { UserManagementComponent } from './components/user/usermanagement/usermanagement.component';
+import { LoginGoogleComponent } from './components/layout/login-google/login-google.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  {path: 'google', component: LoginGoogleComponent},
   { path: 'login', component: LoginComponent },
   { path: 'form', component: FormComponent },
   { path: 'result', component: ResultComponent },
@@ -20,4 +22,5 @@ export const routes: Routes = [
     ]
   },
   {path: '**', redirectTo: ''}
+  
 ];

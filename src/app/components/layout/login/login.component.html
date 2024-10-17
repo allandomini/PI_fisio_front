@@ -1,19 +1,59 @@
-<div class="container">
+  <div class="container-lg">
     <div class="row">
-        <div class="col-lg-4"></div>
-        <div class="col-lg-4 center top">
-            <h4 class="card-title lead mb-4">Login with Google</h4>
-            <p class="card-text mb-4">
-              Hi, login with your Google account to continue.
-            </p>
-            <p class="align-self-center bg-light">
-              <asl-google-signin-button 
-              type='standard' size='medium' text="continue_with" 
-              shape="rectangular" logo_alignment="center" theme="outline" 
-              [width]="400">
-            </asl-google-signin-button>
-            </p>
+      <div class="col-lg-12">
+        <div class="card background-default-color  p-3">
+        <div class="d-md-flex py-5 px-5">
+          <!-- div da imagem -->
+            <div class="d-flex justify-content-center" id="logo">
+              <img src="../../../../assets/img/logo.png" alt="logo" id="logo" />
+            </div>
+                        <!-- div do formulario -->
+            <div class="d-flex flex-column">
+            <h3 class=" card-title justify-content-center">
+              Preenchimento de Formulário
+            </h3>
+              <div class="d-flex flex-column justify-content-center gap-1
+              ">
+                <mdb-form-control>
+                  <input mdbInput type="text" id="form1" class="form-control" />
+                  <label mdbLabel class="form-label w-30 " for="form1">
+                    <i class="fas fa-user p-0"></i>Nome
+                  </label>
+                </mdb-form-control>
+                <div class="row">
+                  <div class="col">
+                    <mdb-form-control>
+                      <input mdbInput type="date" id="form1" class="form-control" />
+                      <label mdbLabel class="form-label" for="form1">Nascimento</label>
+                    </mdb-form-control>
+                  </div>
+                  <div class="col">
+                    <mdb-form-control>
+                      <input mdbInput type="text" id="form1" class="form-control" />
+                      <label mdbLabel class="form-label" for="form1" style="width: 78%;">
+                        <i class="fas fa-graduation-cap"></i> Turma</label>
+                    </mdb-form-control>
+                  </div>
+                </div>
+                <mdb-form-control>
+                  <input mdbInput type="text" id="form1" class="form-control" />
+                  <label mdbLabel class="form-label" for="form1" style="width: 50%;"><i
+                      class="fas fa-book"></i>Disciplina</label>
+                </mdb-form-control>
+              </div>
+            <div class=" pt-3">
+              <a href="#!" class="btn
+               btn-primary d-flex justify-content-between 
+               align-items-center" id="button-entrar">
+                ENTRAR <i class="fa-solid fa-arrow-right mx-0"></i>
+              </a>
+            </div>
+          </div>
+
+
+          </div>
+          </div>
+
         </div>
-        <div class="col-lgg-4"></div>
-    </div>
-</div>
+        </div>
+  </div>

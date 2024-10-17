@@ -1,7 +1,52 @@
-.center{
+.w-desktop{
+  @media (min-width: 768px){
+    width: 50%;
+  }
+}
+  .container-principal {
+    background-color: #e2dcd1;
+    width: 22rem;
+    height: 38rem;
+  }
+  .background-default-color{
+    background-color: #e2dcd1;
+
+  }
+.w-30{
+  width: 30%;
+}
+  .card-body {
+    padding: 0;
+  }
+
+  #button-entrar {
+    background-color: #785946;
+    width: 100%;
+  }
+
+  .btn-primary {
+    --mdb-btn-box-shadow: none;
+  }
+
+  .btn-primary:hover {
+    --mdb-btn-box-shadow: none;
+  }
+
+  i {
+    margin-right: 15%;
+  }
+
+  input {
+    background-color: #ffffff !important;
+  }
+
+  h3 {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 36px;
+    display: flex;
+    align-items: center;
     text-align: center;
-}
-.top{
-    top: 30vh;
-    position: relative;
-}
+    color: #333333;
+  }
+

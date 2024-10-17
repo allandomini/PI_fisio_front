@@ -7,6 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { AuthDTO } from '../../../models/auth-dto';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { AuthDTO } from '../../../models/auth-dto';
     FormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
+    MdbFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
