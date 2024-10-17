@@ -1,13 +1,31 @@
 <div class="container pt-3">
-    <div class="row">
-      <div class="col-lg-12">
-        <div class="card">
-          <div class="card-body">
-            <h1>User List</h1>
-            <br/>
-            <app-userlist></app-userlist>
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h1>User List</h1>
+          <br />
+          @if (userPage) {
+          <app-userlist [users]="userPage.users"></app-userlist>
+
+          <mat-paginator
+          (page)="listAll($event)"
+          [length]="userPage.totalElements"
+          [pageSize]="pageSize"
+          [pageIndex]="pageIndex"
+          [pageSizeOptions]="[5, 10, 20]"
+          aria-label="Select page"
+        >
+        </mat-paginator>
+          } @else {
+          <div class="d-flex justify-content-center pt-3">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
           </div>
+          }
         </div>
       </div>
     </div>
   </div>
+</div>
