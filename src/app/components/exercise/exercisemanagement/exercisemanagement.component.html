@@ -1,0 +1,130 @@
+<div class="container pt-3">
+  <div class="row">
+    <div class="col-lg-12">
+      <div class="card">
+        <div class="card-body">
+          <h1>Exercise Management</h1>
+          @if (exercisePage) {
+
+          <!-- Button trigger collapse -->
+          <div
+            class="d-grid pb-3 pt-2 px-2 gap-3 
+            d-md-flex justify-content-md-end pt-md-0 gap-md-2"
+          >
+            <button
+              class="btn btn-primary "
+              type="button"
+              (click)="basicCollapse.toggle()"
+              [attr.aria-expanded]="!basicCollapse.collapsed"
+              aria-controls="collapseFilter"
+            >
+              <i class="fas fa-filter fa-lg me-1"></i>
+              filter
+            </button>
+
+            <button
+              type="button"
+              class="btn btn-primary "
+              mdbRipple
+              (click)="onNew()"
+            >
+              <i class="fas fa-plus fa-lg me-1"></i>
+              new
+            </button>
+          </div>
+
+          <!--Collapsed content-->
+          <div class="pt-2 pt-md-0 pb-2 pb-md-0" id="collapseFilter" mdbCollapse #basicCollapse="mdbCollapse">
+            <div class="d-md-flex align-items-md-end flex-md-column">
+
+              <div class="w-md-fit">
+                <h6>Filter by:</h6>
+                <form [formGroup]="filterForm">
+                <div
+                  class="d-grid pt-2 
+                  justify-content-md-end d-md-flex pt-md-1 gap-md-3"
+                >
+                  <mat-form-field>
+                    <mat-label>Intensity</mat-label>
+                    <mat-select formControlName="intensities" (change)="onFilterChange(filterForm.value)" multiple>
+                      @for (intensity of intensityOptions; track
+                      intensityOptions) {
+                      <mat-option [value]="intensity.value">{{
+                        intensity.viewValue
+                      }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  <mat-form-field>
+                    <mat-label>Joint</mat-label>
+                    <mat-select formControlName="joints" (change)="onFilterChange(filterForm.value)" multiple>
+                      @for (joint of jointOptions; track jointOptions) {
+                      <mat-option [value]="joint.value">{{
+                        joint.viewValue
+                      }}</mat-option>
+                      }
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <div class="align-self-center ">
+                  <mdb-form-control>
+                    <input mdbInput type="text" id="form1" formControlName="name" (input)="onFilterChange(filterForm.value)" class="form-control form-control-lg" />
+                    <label mdbLabel class="form-label" for="form1">Name</label>
+                  </mdb-form-control>
+                  <div class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"></div>
+                </div>
+
+                </div>
+              </form>
+              </div>
+
+            </div>
+          </div>
+
+          <app-exerciselist
+            (new)="onNew()"
+            (delete)="onDelete($event)"
+            (edit)="onEdit($event)"
+            [exercises]="exercises"
+          ></app-exerciselist>
+
+          <mat-paginator
+            (page)="refresh($event)"
+            [length]="exercisePage.totalElements"
+            [pageSize]="pageSize"
+            [pageIndex]="pageIndex"
+            [pageSizeOptions]="[5, 10, 20]"
+            aria-label="Select page"
+          >
+          </mat-paginator>
+
+          }@else {
+          <div class="d-flex justify-content-center pt-3">
+            <div class="spinner-border" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #modalExerciseDetails>
+  <div class="modal-header">
+    <h5 class="modal-title" id="exampleModalLabel"></h5>
+    <button
+      type="button"
+      class="btn-close"
+      aria-label="Close"
+      (click)="modalRef.close()"
+    ></button>
+  </div>
+  <div class="modal-body">
+    <app-exercisedetails
+      [exercise]="exerciseEdit"
+      (return)="onReturnDetail($event)"
+    ></app-exercisedetails>
+  </div>
+</ng-template>
