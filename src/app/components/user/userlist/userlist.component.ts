@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MdbModalModule } from 'mdb-angular-ui-kit/modal';
 import { ExercisedetailsComponent } from '../../exercise/exercisedetails/exercisedetails.component';
@@ -16,24 +16,8 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './userlist.component.scss',
 })
 export class UserlistComponent {
-  users: User[] = [];
-  userService = inject(UserService);
-  snackBar = inject(MatSnackBar);
+  @Input('users') users: User[] = []
 
-  constructor(){
-    this.listAll();
-  }
-
-  listAll(){
-    this.userService.findAll().subscribe({
-      next: users =>{
-        this.users = users;
-      },
-      error: error =>{
-        this.openSnackBar(error.error,'Close')
-      }
-    })
-  }
   getBadgeClass(jointIntensity: JointIntensity): string {
     switch (jointIntensity.intensity) {
       case Intensity.High:
@@ -45,8 +29,5 @@ export class UserlistComponent {
       default:
         return '';
     }
-}
-openSnackBar(message: string, action: string) {
-  this.snackBar.open(message, action, {});
 }
 }
