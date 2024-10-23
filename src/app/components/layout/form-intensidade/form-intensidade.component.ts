@@ -1,12 +1,21 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SelectionService } from '../../../services/selection.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-form-intensidade',
   standalone: true,
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './form-intensidade.component.html',
-  styleUrl: './form-intensidade.component.scss'
+  styleUrls: ['./form-intensidade.component.scss'],
 })
-export class FormIntensidadeComponent {
+export class FormIntensidadeComponent implements OnInit {
+  selectedRegions: string[] = [];
 
+  constructor(private selectionService: SelectionService) {}
+
+  ngOnInit() {
+    this.selectedRegions = this.selectionService.getSelectedRegions();
+    console.log('Regions loaded:', this.selectedRegions); // Debug
+  }
 }

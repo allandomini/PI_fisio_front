@@ -7,20 +7,21 @@
         Selecione a intensidade para cada região que sentir dor:
       </h2>
 
-      <!-- Seção de Intensidade: Cervical -->
+      <!-- Renderizar apenas as regiões selecionadas -->
       <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
+        *ngFor="let region of selectedRegions"
+        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between text-break w-100 col-12 col-md-8"
+        style="background-color: #6b705c"
       >
-        <span class="text-white">Cervical:</span>
-        <div class="d-flex align-items-center">
+        <span class="text-white">{{ region }}:</span>
+        <div class="d-flex align-items-center flex-wrap">
           <div class="form-check mx-2">
             <input
               class="form-check-input"
               type="checkbox"
-              id="leve-cervical"
+              [id]="'leve-' + region"
             />
-            <label class="form-check-label text-white" for="leve-cervical"
+            <label class="form-check-label text-white" [for]="'leve-' + region"
               >Leve</label
             >
           </div>
@@ -28,9 +29,11 @@
             <input
               class="form-check-input"
               type="checkbox"
-              id="moderada-cervical"
+              [id]="'moderada-' + region"
             />
-            <label class="form-check-label text-white" for="moderada-cervical"
+            <label
+              class="form-check-label text-white"
+              [for]="'moderada-' + region"
               >Moderada</label
             >
           </div>
@@ -38,193 +41,11 @@
             <input
               class="form-check-input"
               type="checkbox"
-              id="intensa-cervical"
+              [id]="'intensa-' + region"
             />
-            <label class="form-check-label text-white" for="intensa-cervical"
-              >Intensa</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Seção de Intensidade: Ombro -->
-      <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
-      >
-        <span class="text-white">Ombro:</span>
-        <div class="d-flex align-items-center">
-          <div class="form-check mx-2">
-            <input class="form-check-input" type="checkbox" id="leve-ombro" />
-            <label class="form-check-label text-white" for="leve-ombro"
-              >Leve</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="moderada-ombro"
-            />
-            <label class="form-check-label text-white" for="moderada-ombro"
-              >Moderada</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="intensa-ombro"
-            />
-            <label class="form-check-label text-white" for="intensa-ombro"
-              >Intensa</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Seção de Intensidade: Lombar -->
-      <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
-      >
-        <span class="text-white">Lombar:</span>
-        <div class="d-flex align-items-center">
-          <div class="form-check mx-2">
-            <input class="form-check-input" type="checkbox" id="leve-lombar" />
-            <label class="form-check-label text-white" for="leve-lombar"
-              >Leve</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="moderada-lombar"
-            />
-            <label class="form-check-label text-white" for="moderada-lombar"
-              >Moderada</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="intensa-lombar"
-            />
-            <label class="form-check-label text-white" for="intensa-lombar"
-              >Intensa</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Seção de Intensidade: Joelho -->
-      <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
-      >
-        <span class="text-white">Joelho:</span>
-        <div class="d-flex align-items-center">
-          <div class="form-check mx-2">
-            <input class="form-check-input" type="checkbox" id="leve-joelho" />
-            <label class="form-check-label text-white" for="leve-joelho"
-              >Leve</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="moderada-joelho"
-            />
-            <label class="form-check-label text-white" for="moderada-joelho"
-              >Moderada</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="intensa-joelho"
-            />
-            <label class="form-check-label text-white" for="intensa-joelho"
-              >Intensa</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Seção de Intensidade: Tornozelo -->
-      <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
-      >
-        <span class="text-white">Tornozelo:</span>
-        <div class="d-flex align-items-center">
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="leve-tornozelo"
-            />
-            <label class="form-check-label text-white" for="leve-tornozelo"
-              >Leve</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="moderada-tornozelo"
-            />
-            <label class="form-check-label text-white" for="moderada-tornozelo"
-              >Moderada</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="intensa-tornozelo"
-            />
-            <label class="form-check-label text-white" for="intensa-tornozelo"
-              >Intensa</label
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- Seção de Intensidade: Quadril -->
-      <div
-        class="p-3 mb-3 rounded d-flex align-items-center justify-content-between"
-        style="background-color: #6b705c; width: 70%"
-      >
-        <span class="text-white">Quadril:</span>
-        <div class="d-flex align-items-center">
-          <div class="form-check mx-2">
-            <input class="form-check-input" type="checkbox" id="leve-quadril" />
-            <label class="form-check-label text-white" for="leve-quadril"
-              >Leve</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="moderada-quadril"
-            />
-            <label class="form-check-label text-white" for="moderada-quadril"
-              >Moderada</label
-            >
-          </div>
-          <div class="form-check mx-2">
-            <input
-              class="form-check-input"
-              type="checkbox"
-              id="intensa-quadril"
-            />
-            <label class="form-check-label text-white" for="intensa-quadril"
+            <label
+              class="form-check-label text-white"
+              [for]="'intensa-' + region"
               >Intensa</label
             >
           </div>
