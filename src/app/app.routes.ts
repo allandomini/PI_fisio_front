@@ -9,29 +9,21 @@ import { ExerciseManagementComponent } from './components/exercise/exercisemanag
 import { UserManagementComponent } from './components/user/usermanagement/usermanagement.component';
 import { LoginGoogleComponent } from '../app/components/login-google/login-google.component';
 import { MainComponent } from '../app/components/main/main.component';
-import { HeaderComponent } from './components/header/header.component';
-
 import { FormIntensidadeComponent } from './components/layout/form-intensidade/form-intensidade.component';
 
 export const routes: Routes = [
-  { path: '', component: MainComponent,
-    children:[
-    {path: 'home', component: HomeComponent},
-    {path: 'google', component: LoginGoogleComponent},
-    { path: 'login', component: LoginComponent },
-    { path: 'form', component: FormComponent },
-    { path: 'result', component: ResultComponent },
-  ] },
-  {path: 'admin', component: AdminComponent, canActivate: [AdminGuard],
-    children:[
-      {path: 'exercise', component: ExerciseManagementComponent},
-      {path: 'user', component: UserManagementComponent}
-    ]
-  { path: '', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'form', component: FormComponent },
-  { path: 'form-intensidade', component: FormIntensidadeComponent },
-  { path: 'result', component: ResultComponent },
+  {
+    path: '',
+    component: MainComponent,
+    children: [
+      { path: 'home', component: HomeComponent },
+      { path: 'google', component: LoginGoogleComponent },
+      { path: 'login', component: LoginComponent },
+      { path: 'form', component: FormComponent },
+      { path: 'result', component: ResultComponent },
+      { path: 'form-intensidade', component: FormIntensidadeComponent },
+    ],
+  },
   {
     path: 'admin',
     component: AdminComponent,
@@ -41,6 +33,5 @@ export const routes: Routes = [
       { path: 'user', component: UserManagementComponent },
     ],
   },
-
   { path: '**', redirectTo: '' },
 ];
