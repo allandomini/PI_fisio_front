@@ -2,11 +2,12 @@ import { GoogleSigninButtonModule, SocialAuthService, SocialLoginModule } from '
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
-import { AuthService } from '../../../services/auth.service';
+import { AuthService } from '../../../app/services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { AuthDTO } from '../../../models/auth-dto';
+import { AuthDTO } from '../../../app/models/auth-dto';
+import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ import { AuthDTO } from '../../../models/auth-dto';
     FormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
+    MdbFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
