@@ -7,38 +7,61 @@ import { ExercisePage } from '../models/exercise-page';
 import { ExerciseFilterDTO } from '../models/exercise-filter-dto';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class ExerciseService {
   http = inject(HttpClient);
   api = `${environment.BACKEND_URL}/api/exercise`;
 
-  findAll(page = 0, size = 10, exercise: ExerciseFilterDTO): Observable<ExercisePage> {
+  // Existing methods
+
+  findAll(
+    page = 0,
+    size = 10,
+    exercise: ExerciseFilterDTO
+  ): Observable<ExercisePage> {
     const params: any = { page, size };
 
     if (exercise.name && exercise.name.length > 0) {
-        params.name = exercise.name;
+      params.name = exercise.name;
     }
     if (exercise.joints && exercise.joints.length > 0) {
-        params.joints = exercise.joints.join(','); 
+      params.joints = exercise.joints.join(',');
     }
     if (exercise.intensities && exercise.intensities.length > 0) {
-        params.intensities = exercise.intensities.join(','); 
+      params.intensities = exercise.intensities.join(',');
     }
 
     return this.http.get<ExercisePage>(this.api, { params });
-}
-
-  save(exercise: Exercise): Observable<any>{
-    return this.http.post(this.api,exercise, { responseType: 'json' } );
   }
 
-  update(exercise: Exercise, id: number){
-    return this.http.put(`${this.api}/${id}`, exercise, { responseType: 'text' });
+  save(exercise: Exercise): Observable<any> {
+    return this.http.post(this.api, exercise, { responseType: 'json' });
   }
 
-  delete(id: number){
-    return this.http.delete(`${this.api}/${id}`,  { responseType: 'text' });
+  update(exercise: Exercise, id: number) {
+    return this.http.put(`${this.api}/${id}`, exercise, {
+      responseType: 'text',
+    });
   }
-  constructor() { }
+
+  delete(id: number) {
+    return this.http.delete(`${this.api}/${id}`, { responseType: 'text' });
+  }
+
+  // New method to fetch exercises by joint and intensity
+  findByJointAndIntensity(
+    joint: string,
+    intensity: string
+  ): Observable<Exercise[]> {
+    const url = `${this.api}/findByJointAndIntensity`;
+    const params = {
+      joint: joint.toUpperCase(),
+      intensity: intensity.toUpperCase(),
+    };
+
+    return this.http.get<Exercise[]>(url, { params });
+  }
+
+  constructor() {}
 }

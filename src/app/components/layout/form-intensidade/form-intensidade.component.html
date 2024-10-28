@@ -14,22 +14,26 @@
         style="background-color: #6b705c"
       >
         <span class="text-white">{{ region }}:</span>
-        <div class="d-flex align-items-center flex-wrap">
-          <div class="form-check mx-2">
+        <div class="checkbox-container">
+          <div class="form-check">
             <input
               class="form-check-input"
               type="checkbox"
               [id]="'leve-' + region"
+              (change)="onCheckboxChange($event, region, 'leve')"
+              [checked]="selectedCheckbox[region] === 'leve'"
             />
             <label class="form-check-label text-white" [for]="'leve-' + region"
               >Leve</label
             >
           </div>
-          <div class="form-check mx-2">
+          <div class="form-check">
             <input
               class="form-check-input"
               type="checkbox"
               [id]="'moderada-' + region"
+              (change)="onCheckboxChange($event, region, 'moderada')"
+              [checked]="selectedCheckbox[region] === 'moderada'"
             />
             <label
               class="form-check-label text-white"
@@ -37,11 +41,13 @@
               >Moderada</label
             >
           </div>
-          <div class="form-check mx-2">
+          <div class="form-check">
             <input
               class="form-check-input"
               type="checkbox"
               [id]="'intensa-' + region"
+              (change)="onCheckboxChange($event, region, 'intensa')"
+              [checked]="selectedCheckbox[region] === 'intensa'"
             />
             <label
               class="form-check-label text-white"
@@ -53,7 +59,13 @@
       </div>
 
       <!-- Botão de Enviar -->
-      <button type="button" class="btn btn-dark mt-3">ENVIAR</button>
+      <button
+        type="button"
+        class="btn btn-dark mt-3"
+        (click)="submitSelection()"
+      >
+        ENVIAR
+      </button>
     </div>
   </div>
 </div>
