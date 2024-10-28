@@ -1,14 +1,21 @@
-import { Component } from '@angular/core';
-import {MatTabsModule} from '@angular/material/tabs';
+import { Component, OnInit } from '@angular/core';
+import { MatTabsModule } from '@angular/material/tabs';
+import { CommonModule } from '@angular/common';
+import { SelectionService } from '../../../services/selection.service';
+
 @Component({
   selector: 'app-result',
   standalone: true,
-  imports: [MatTabsModule],
+  imports: [CommonModule, MatTabsModule],
   templateUrl: './result.component.html',
-  styleUrl: './result.component.scss'
+  styleUrls: ['./result.component.scss']
 })
+export class ResultComponent implements OnInit {
+  selectedRegions: string[] = [];
 
+  constructor(private selectionService: SelectionService) {}
 
-export class ResultComponent {
-
+  ngOnInit() {
+    this.selectedRegions = this.selectionService.getSelectedRegions();
+  }
 }

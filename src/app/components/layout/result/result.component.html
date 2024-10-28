@@ -12,7 +12,6 @@
             />
           </div>
         </div>
-        <!-- Título e Subtítulo -->
         <div class="col-12 col-md-6 text-center">
           <h2 class="titulo-header mb-2">Conheça seu Corpo</h2>
           <p class="p-header m-0">Rotinas de Treino Ajustadas ao Seu Corpo</p>
@@ -25,13 +24,14 @@
   <!-- conteúdo do body -->
   <div class="container-fluid vh-100 d-flex justify-content-center">
     <mat-tab-group class="w-100">
-      <mat-tab label="Cervical">
+      <mat-tab *ngFor="let region of selectedRegions" [label]="region">
         <div class="container-fluid py-5">
           <div class="row">
             <div
               class="col-md-6 d-flex align-items-center justify-content-center"
             >
-              <iframe
+            <!-- achar uma maneira de colocar os videos possíveis aqui (video atual de exemplo) -->
+              <iframe 
                 width="560"
                 height="315"
                 src="https://www.youtube.com/embed/RzLEKA7HE-8?si=3j7IELTw6amKod0C"
@@ -43,74 +43,14 @@
               ></iframe>
             </div>
             <div class="col-md-3 description text-center my-5">
-              <h3 class="text-center">Circundução da Cervical</h3>
+              <h3>{{ region }} - Exercício</h3>
               <p>
-                Para realizarmos o aquecimento da nossa cervical vamos estar
-                realizando o movimento de circundação, fazendo o movimento em
-                forma de círculo bem devagar e respeitando os limites.
+                Descrição do exercício específico para a região {{ region }}.
               </p>
             </div>
           </div>
         </div>
-        <hr class="hr" />
-        <div class="container-fluid py-5">
-          <div class="row">
-            <div
-              class="col-md-6 d-flex align-items-center justify-content-center"
-            >
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/1HBDn0ggCuo?si=eBYHLAiqiIUJJRcr"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="col-md-3 description text-center my-5">
-              <h3 class="text-center">Circundução da Cervical</h3>
-              <p>
-                Para realizarmos o aquecimento da nossa cervical vamos estar
-                realizando o movimento de circundação, fazendo o movimento em
-                forma de círculo bem devagar e respeitando os limites.
-              </p>
-            </div>
-          </div>
-        </div>
-        <hr class="hr" />
-        <div class="container-fluid py-5">
-          <div class="row">
-            <div
-              class="col-md-6 d-flex align-items-center justify-content-center"
-            >
-              <iframe
-                width="560"
-                height="315"
-                src="https://www.youtube.com/embed/9ZSivAPMTaQ?si=zMdeuPTDtWgDqcll"
-                title="YouTube video player"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                referrerpolicy="strict-origin-when-cross-origin"
-                allowfullscreen
-              ></iframe>
-            </div>
-            <div class="col-md-3 description text-center my-5">
-              <h3 class="text-center">Circundução da Cervical</h3>
-              <p>
-                Para realizarmos o aquecimento da nossa cervical vamos estar
-                realizando o movimento de circundação, fazendo o movimento em
-                forma de círculo bem devagar e respeitando os limites.
-              </p>
-            </div>
-          </div>
-        </div>
-        <hr class="hr" />
       </mat-tab>
-      <mat-tab label="Ombro">Conteúdo Ombro</mat-tab>
-      <mat-tab label="Braço">Conteúdo Braço</mat-tab>
-      <mat-tab label="Perna">Conteúdo Perna</mat-tab>
     </mat-tab-group>
   </div>
 </body>
