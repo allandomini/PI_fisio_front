@@ -1,4 +1,8 @@
-import { GoogleSigninButtonModule, SocialAuthService, SocialLoginModule } from '@abacritt/angularx-social-login';
+import {
+  GoogleSigninButtonModule,
+  SocialAuthService,
+  SocialLoginModule,
+} from '@abacritt/angularx-social-login';
 import { Component, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { MdbRippleModule } from 'mdb-angular-ui-kit/ripple';
@@ -16,30 +20,46 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
     FormsModule,
     SocialLoginModule,
     GoogleSigninButtonModule,
-    MdbFormsModule
+    MdbFormsModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  constructor(private socialAuth: SocialAuthService, private authService: AuthService, private route: Router) { 
+
+  userName: string = '';
+
+  constructor(
+    private socialAuth: SocialAuthService,
+    private authService: AuthService,
+    private route: Router
+  ) {
     authService.logout();
   }
-  
+
   ngOnInit() {
+
+    const nome = localStorage.getItem('userName');
+    if(nome){
+      this.userName = nome; //vai trazer o nome do usuário pro input 
+    }
+
     this.socialAuth.authState.subscribe((res: any) => {
-      this.authService.login(res.idToken)
-        .subscribe({
-          next: (auth: AuthDTO) => {
-            console.log('AccessToken: ', auth.accessToken)
-            console.log('RefreshToken: ', auth.refreshToken)
-            this.authService.setAuthToken(auth)
-            this.route.navigate(['/form'])
-          },
-          error: (error: any) => {
-            console.log("Something ain't right!", `The error is: ${error.error.message}`)
-          }
-        })
+      this.authService.login(res.idToken).subscribe({
+        next: (auth: AuthDTO) => {
+          console.log('AccessToken: ', auth.accessToken);
+          console.log('RefreshToken: ', auth.refreshToken);
+          this.authService.setAuthToken(auth);
+          this.route.navigate(['/form']);
+        },
+        error: (error: any) => {
+          console.log(
+            "Something ain't right!",
+            `The error is: ${error.error.message}`
+          );
+        },
+      });
     });
+  
   }
 }
