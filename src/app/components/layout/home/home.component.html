@@ -1,33 +1,56 @@
-<div class="row">
-  <div class="col-md-3">
-    <img src="../../../../assets/Saude_Ensino.jpeg" alt="" />
+  <div class="containerr
+  position-relative overflow-hidden justify-content-center  ">
+    
+  <!-- Logo -->
+    <header class="logo-container">
+      <div>
+        <img class="img-fluid" src="../../../../assets/Saude_Ensino.jpeg" alt="" />
+      </div>
+      <app-flowers customClass="flower"></app-flowers>
+    </header>
+
+    <!-- Content -->
+    <main class="main-container  my-5
+    px-md-3 ">
+      <div class="d-flex flex-column text-center align-items-center gap-3
+      text-md-start px-md-0 py-md-5" >
+        <!-- title -->
+        <p class="title w-100">Protocolo de Prevenção LER e DORT</p>
+
+        <!-- Content -->
+        <div class="description-container 
+        pb-md-5">
+          <span class="description">
+            {{description}}
+          </span>
+        </div>
+
+        <!-- button -->
+        <div class="d-md-flex justify-content-md-center pt-md-1">
+          <button
+            type="button"
+            class="fw-normal btn btn-dark btn-start fs-7 rounded-5"
+            data-mdb-ripple-init
+            (click)="onStart()">
+            Começar agora!
+          </button>
+        </div>
+
+        <img class="img-fluid snake-mobile"  src="../../../../assets/snakee.png" alt="" />
+      </div>
+
+    </main>
+
+      <!-- Logo cobra & blob-->
+    <aside class="blob-container">
+        <div class="blob blob-md 
+        position-absolute ">
+        <!-- cobrinha -->
+        <div class="position-fixed snake-container">
+            <img class="img-fluid snake-desktop"  src="../../../../assets/snakee.png" alt="" />
+          </div>
+        </div>
+
+    </aside>
+
   </div>
-  <div class="col-md-6">
-    <div class="col-md" style="z-index: 2">
-      <h1 class="display-4 fw-bold" style="color: 2B1B12">
-        Protocolo de Prevenção LER e DORT
-      </h1>
-      <p class="lead">
-        Lorem ipsum, dolor sit amet consectetur adipiscing elit. Esse, ea
-        tempora vitae sequi quos et ipsum explicabo, minus illo sit porro
-        quaerat, officiis dignissimos molestiae earum quisquam harum maxime
-        officia.
-      </p>
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipiscing elit. Ad doloreque
-        maxime, a veniam minima id excepturi perferendis.
-      </p>
-      <button
-        mat-raised-button
-        color="primary"
-        class="btn btn-dark"
-        (click)="navigateToForm()"
-      >
-        COMEÇAR AGORA!
-      </button>
-    </div>
-  </div>
-  <div class="col-md-3">
-    <img src="../../../../assets/prototip.png" alt="" />
-  </div>
-</div>
