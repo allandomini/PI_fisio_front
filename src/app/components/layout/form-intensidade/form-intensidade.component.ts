@@ -22,7 +22,7 @@ export class FormIntensidadeComponent implements OnInit {
 
   ngOnInit() {
     this.selectedRegions = this.selectionService.getSelectedRegions();
-    console.log('Regions loaded:', this.selectedRegions); // Debug
+    console.log('Regions loaded:', this.selectedRegions); 
   }
 
   setIntensity (regiao: string, intensity: string){
