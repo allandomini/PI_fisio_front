@@ -30,9 +30,17 @@ export class LoginComponent implements OnInit {
     private socialAuth: SocialAuthService,
     private authService: AuthService,
     private route: Router
-  ) {}
+  ) {
+    authService.logout();
+  }
 
   ngOnInit() {
+
+    const nome = localStorage.getItem('userName');
+    if(nome){
+      this.userName = nome; //vai trazer o nome do usuário pro input 
+    }
+
     this.socialAuth.authState.subscribe((res: any) => {
       this.authService.login(res.idToken).subscribe({
         next: (auth: AuthDTO) => {
@@ -49,5 +57,6 @@ export class LoginComponent implements OnInit {
         },
       });
     });
+  
   }
 }

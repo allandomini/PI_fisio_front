@@ -1,1 +1,57 @@
-<p>result works!</p>
+<body>
+  <header>
+    <div class="container-fluid h-100 background">
+      <div class="row align-items-center">
+        <!-- Logo -->
+        <div class="col-12 col-md-3 text-center text-md-start mb-3 mb-md-0">
+          <div class="logo">
+            <a  (click)="message()"
+              ><img
+                src="../../../../assets/img/logo.png"
+                class="w-50 w-md-75 my-0"
+                alt=""
+            /></a>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 text-center">
+          <h2 class="titulo-header mb-2">Conheça seu Corpo</h2>
+          <p class="p-header m-0">Rotinas de Treino Ajustadas ao Seu Corpo</p>
+        </div>
+        <div class="col-md-3 d-none d-md-block"></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- conteúdo do body -->
+  <div class="container-fluid vh-100 d-flex justify-content-center">
+    <mat-tab-group class="w-100">
+      <mat-tab *ngFor="let region of selectedRegions" [label]="region">
+        <div class="container-fluid py-5">
+          <div class="row">
+            <div
+              class="col-md-6 d-flex align-items-center justify-content-center"
+            >
+              <!-- achar uma maneira de colocar os videos possíveis aqui (video atual de exemplo) -->
+              <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/RzLEKA7HE-8?si=3j7IELTw6amKod0C"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+            <div class="col-md-3 description text-center my-5">
+              <h3>{{ region }} - Exercício</h3>
+              <p>
+                Descrição do exercício específico para a região {{ region }}.
+              </p>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+  </div>
+</body>

@@ -3,6 +3,9 @@ import { SelectionService } from '../../../services/selection.service';
 import { ExerciseService } from '../../../services/exercise.service'; // Import ExerciseService
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
+import { Intensity } from '../../../models/exercise';
+import { routes } from '../../../app.routes';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-form-intensidade',
