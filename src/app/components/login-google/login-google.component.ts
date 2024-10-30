@@ -22,6 +22,9 @@ import { appConfig } from '../../../app/app.config';
   styleUrls: ['./login-google.component.scss'] 
 })
 export class LoginGoogleComponent implements OnInit {
+
+  userName: string = '';
+
   constructor(
     private socialAuth: SocialAuthService,
     private authService: AuthService,
@@ -32,6 +35,10 @@ export class LoginGoogleComponent implements OnInit {
 
   ngOnInit() {
     this.socialAuth.authState.subscribe((res: any) => {
+      const userName = res.name;
+      console.log('Nome do usuário que logou com o Google: ', userName);
+      localStorage.setItem('userName', userName); //armazena o nome do usuário no local storage 
+
       this.authService.login(res.idToken)
         .subscribe({
           next: (auth: AuthDTO) => {

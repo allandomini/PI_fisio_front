@@ -1,0 +1,44 @@
+ 
+  .titulo-header {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .p-header {
+    font-size: 14px;
+  }
+  
+  @media (max-width: 768px) {
+    .titulo-header {
+      font-size: 1.5rem;
+    }
+    
+    .logo img {
+      width: 40% !important; 
+    }
+
+  }
+  
+  .video-placeholder {
+    height: 300px;
+  }
+  
+  .mat-tab-label {
+    color: #3D513D;
+    font-weight: bold;
+    font-size: 1.25rem;
+  }
+  
+  .mat-tab-label.mat-tab-label-active {
+    color: #3D513D;
+  }
+  
+  .mat-ink-bar {
+    background-color: #3D513D;
+  }
+  
+  .description p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
