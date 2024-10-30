@@ -27,7 +27,6 @@ export class FormIntensidadeComponent implements OnInit {
 
   setIntensity (regiao: string, intensity: string){
     this.selectionService.setRegionIntensity(regiao, intensity);
-
   }
   
   result(){
