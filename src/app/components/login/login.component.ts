@@ -32,9 +32,7 @@ export class LoginComponent implements OnInit {
     private socialAuth: SocialAuthService,
     private authService: AuthService,
     private route: Router
-  ) {
-    authService.logout();
-  }
+  ) {}
 
   ngOnInit() {
     const nome = localStorage.getItem('userName');
