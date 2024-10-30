@@ -26,9 +26,6 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-
-  userName: string = '';
-
   constructor(
     private socialAuth: SocialAuthService,
     private authService: AuthService,
