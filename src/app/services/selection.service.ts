@@ -5,8 +5,8 @@ import { Injectable } from '@angular/core';
 })
 export class SelectionService {
   private selectedRegions: string[] = [];
-  private regiaoIntensidade: {[regiao: string]: string} = {};
-
+  private regiaoIntensidade: { [regiao: string]: string } = {};
+  private selectedExercises: any[] = [];
   setSelectedRegions(regions: string[]) {
     this.selectedRegions = regions;
   }
@@ -21,5 +21,12 @@ export class SelectionService {
 
   getRegionIntensities(): { [region: string]: string } {
     return this.regiaoIntensidade;
+  }
+  setSelectedExercises(exercises: any[]): void {
+    this.selectedExercises = exercises;
+  }
+
+  getSelectedExercises(): any[] {
+    return this.selectedExercises;
   }
 }

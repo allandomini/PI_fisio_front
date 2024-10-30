@@ -1,11 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { SelectionService } from '../../../services/selection.service';
-import { ExerciseService } from '../../../services/exercise.service'; // Import ExerciseService
+import { ExerciseService } from '../../../services/exercise.service';
 import { HttpClientModule } from '@angular/common/http';
 import { CommonModule } from '@angular/common';
-import { Intensity } from '../../../models/exercise';
-import { routes } from '../../../app.routes';
 import { Router } from '@angular/router';
+import { forkJoin, Observable } from 'rxjs';
 
 @Component({
   selector: 'app-form-intensidade',
@@ -35,7 +34,8 @@ export class FormIntensidadeComponent implements OnInit {
 
   constructor(
     private selectionService: SelectionService,
-    private exerciseService: ExerciseService // Inject ExerciseService
+    private exerciseService: ExerciseService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -52,24 +52,26 @@ export class FormIntensidadeComponent implements OnInit {
   }
 
   submitSelection() {
+    const requests: Observable<any>[] = [];
+
     Object.entries(this.selectedCheckbox).forEach(([region, intensity]) => {
       const translatedRegion = this.regionMap[region];
       const translatedIntensity = this.intensityMap[intensity];
-      this.fetchExercises(translatedRegion, translatedIntensity);
+      const request = this.exerciseService.findByJointAndIntensity(
+        translatedRegion,
+        translatedIntensity
+      );
+      requests.push(request);
     });
-  }
 
-  // Use ExerciseService to fetch exercises
-  fetchExercises(joint: string, intensity: string) {
-    this.exerciseService.findByJointAndIntensity(joint, intensity).subscribe(
-      (response: any) => {
-        console.log(`Exercises for ${joint} (${intensity}):`, response);
+    forkJoin(requests).subscribe(
+      (responses: any[]) => {
+        const allExercises = responses.flat();
+        this.selectionService.setSelectedExercises(allExercises);
+        this.router.navigate(['/result']);
       },
       (error: any) => {
-        console.error(
-          `Error fetching exercises for ${joint} (${intensity}):`,
-          error
-        );
+        console.error('Error fetching exercises:', error);
       }
     );
   }
