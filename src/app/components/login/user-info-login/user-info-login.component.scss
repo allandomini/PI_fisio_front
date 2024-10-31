@@ -1,0 +1,47 @@
+#button-entrar {
+  background-color: #785946;
+  width: 100%;
+  height: 3rem;
+}
+.btn-dark {
+  --mdb-btn-box-shadow: none !important;
+}
+.btn-dark:hover {
+  --mdb-btn-box-shadow-state: none !important;
+}
+
+
+.main-form{
+  @media (min-width: 768px) {
+    width: 30rem;
+    }
+}
+h3 {
+  font-weight: 500;
+  font-size: 27px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #333333;
+}
+
+.input-group{
+  width: fit-content;
+  border-radius: 0.25rem;
+}
+
+
+.mat-mdc-chip {
+  --mdc-chip-label-text-size: 13px;
+}
+
+.mat-mdc-standard-chip:not(.mdc-evolution-chip--disabled) {
+  background-color: #eceff1;
+}
+.disabled-form{
+  background-color: #e9ecef;
+}
+.enabled-form{
+  background-color: white !important;
+}

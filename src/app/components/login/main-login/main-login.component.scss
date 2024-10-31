@@ -1,0 +1,21 @@
+.main-container{
+    background-image: url(../../../../assets/img/background.png);
+    background-size: cover;
+    min-height: 100vh;
+}
+.main-row{
+    height: 100vh;
+}
+
+.main-card{
+    background-color: #e2dcd1;
+    height: fit-content;
+    width: fit-content;
+    overflow: hidden;
+}
+.logo{
+    width: 17rem;
+    height: 13rem;
+    align-self: center;
+  }
+  
