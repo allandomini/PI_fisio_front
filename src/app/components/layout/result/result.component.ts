@@ -42,7 +42,7 @@ export class ResultComponent implements OnInit {
       .getSelectedExercises()
       .map((exercise: any) => {
         return {
-          ...exercise,
+          exercise,
           joint: this.regionMap[exercise.joint] || exercise.joint, // Traduza a região aqui
           videoUrl: this.transformToEmbedUrl(exercise.videoUrl),
         };

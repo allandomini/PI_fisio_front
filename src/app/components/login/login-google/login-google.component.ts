@@ -28,7 +28,7 @@ export class LoginGoogleComponent implements OnInit {
     private authService: AuthService,
     private route: Router
   ) {
-    authService.logout();
+    // authService.logout();
   }
 
   ngOnInit() {

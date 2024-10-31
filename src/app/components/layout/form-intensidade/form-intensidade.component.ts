@@ -26,7 +26,7 @@ export class FormIntensidadeComponent implements OnInit {
   private regionMap: { [key: string]: string } = {
     Cervical: 'CERVICAL',
     Ombro: 'SHOULDER',
-    Lombar: 'LUMBAR',
+    Lombar: 'LOWERBACK',
     Joelho: 'KNEE',
     Tornozelo: 'ANKLE',
     Quadril: 'HIP',
