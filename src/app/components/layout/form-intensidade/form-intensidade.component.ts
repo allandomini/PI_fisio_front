@@ -57,6 +57,8 @@ export class FormIntensidadeComponent implements OnInit {
     Object.entries(this.selectedCheckbox).forEach(([region, intensity]) => {
       const translatedRegion = this.regionMap[region];
       const translatedIntensity = this.intensityMap[intensity];
+      console.log(translatedRegion);
+      console.log(translatedIntensity);
       const request = this.exerciseService.findByJointAndIntensity(
         translatedRegion,
         translatedIntensity

@@ -56,7 +56,7 @@ export class ExerciseService {
   ): Observable<Exercise[]> {
     const url = `${this.api}/findByJointAndIntensity`;
     const params = {
-      joint: joint.toUpperCase(),
+      joint: joint,
       intensity: intensity.toUpperCase(),
     };
 
