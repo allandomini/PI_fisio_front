@@ -23,7 +23,6 @@ import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
     MdbFormsModule,
   ],
   templateUrl: './login.component.html',
-  styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
   userName: string = '';

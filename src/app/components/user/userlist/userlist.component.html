@@ -3,10 +3,11 @@
     <thead class="table-light">
       <tr>
         <th>Id</th>
-        <th>Name</th>
-        <th>Role</th>
-        <th>Courses</th>
-        <th>Pain Joint & Intensity</th>
+        <th>Nome</th>
+        <th>Papel</th>
+        <th>Turmas</th>
+        <th>Disciplina</th>
+        <th>Articulação e intensidade de dor</th>
       </tr>
     </thead>
     <tbody>
@@ -32,14 +33,16 @@
         </td>
         <td >
           <div class="d-flex gap-2 align-items-center "> 
-            @for (course of user.courses; track $index) {
+            @for (course of user.classes; track $index) {
           <span class="badge rounded-pill badge-primary fs-7">
             {{course}}
           </span>
         }  
         </div>        
         </td>
-
+        <td>
+          {{user.subject}}
+        </td>
         <td>
           <div class="d-flex gap-2 align-items-center ">
             @for (jointIntensity of user.jointIntensities; track $index) {

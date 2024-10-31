@@ -1,12 +1,10 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { GoogleSigninButtonModule, SocialAuthService, SocialLoginModule } from '@abacritt/angularx-social-login';
 import { Router } from '@angular/router';
-import { AuthService } from '../../../app/services/auth.service';
-import { AuthDTO } from '../../../app/models/auth-dto';
 import { FormsModule } from '@angular/forms';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
-import { LoginComponent } from '../login/login.component';
-import { appConfig } from '../../../app/app.config';
+import { AuthService } from '../../../services/auth.service';
+import { AuthDTO } from '../../../models/auth-dto';
 
 @Component({
   selector: 'app-login-google',
@@ -45,7 +43,7 @@ export class LoginGoogleComponent implements OnInit {
             console.log('AccessToken: ', auth.accessToken);
             console.log('RefreshToken: ', auth.refreshToken);
             this.authService.setAuthToken(auth);
-            this.route.navigate(['/login']);
+            this.route.navigate(['/login/userinfo']);
           },
           error: (error: any) => {
             console.log("Something ain't right!", `The error is: ${error.error.message}`);

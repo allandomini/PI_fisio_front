@@ -1,0 +1,121 @@
+<form [formGroup]="formGroup" class="d-flex flex-column gap-1 main-form">
+  <h3 class="card-title justify-content-center pb-3">
+    Preenchimento de Formulário
+  </h3>
+  <!-- Container dos imputs. -->
+  <div class="d-flex flex-column justify-content-center gap-3 py-3">
+    <!-- Input de nome -->
+    <mdb-form-control>
+      <input
+        mdbInput
+        mdbValidate
+        required
+        type="text"
+        id="form1"
+        class="form-control bg-white"
+        formControlName="name"
+      />
+      <label mdbLabel class="form-label" for="form1" style="width: 4.1rem">
+        <i class="fas fa-user me-2"></i>Nome</label
+      >
+    </mdb-form-control>
+    <!-- Input da data de nascimento -->
+    <mdb-form-control>
+      <input
+        mdbInput
+        mdbValidate
+        required
+        type="date"
+        id="form1"
+        class="form-control bg-white"
+        formControlName="date"
+      />
+      <label mdbLabel class="form-label" for="form1">Nascimento</label>
+    </mdb-form-control>
+    <!-- Input de turmas -->
+    <div>
+      <mdb-form-control
+        class="w-100 rounded pt-1 px-1"
+        [ngClass]="isTeacherValue ? 'enabled-form' : 'disabled-form'"
+      >
+        <mat-chip-grid
+          #templateChipGrid
+          aria-label="Enter template form keywords"
+          [(ngModel)]="chipClasses"
+          [ngModelOptions]="{ standalone: true }"
+          [disabled]="!isTeacherValue"
+        >
+          <!-- https://material.angular.io/components/chips/overview -->
+          @for (keyword of chipClasses(); track keyword) {
+          <mat-chip-row (removed)="removeTemplateKeyword(keyword)">
+            {{ keyword }}
+            <button matChipRemove aria-label="'remove template form' + keyword">
+              <mat-icon>cancel</mat-icon>
+            </button>
+          </mat-chip-row>
+          }
+        </mat-chip-grid>
+
+        <input
+          mdbInput
+          mdbValidate
+          required
+          type="text"
+          class="form-control ms-0 active no-animation"
+          (keydown.enter)="onSendCourse()"
+          [matChipInputFor]="templateChipGrid"
+          formControlName="classes"
+          (blur)="onBlurClasses()"
+        />
+        <label mdbLabel class="form-label" for="turma" style="width: 4.9rem">
+          <i class="fas fa-graduation-cap me-1"></i>Turmas</label
+        >
+      </mdb-form-control>
+      <div class="form-text">Exemplo: 1º B, 2º ano C.</div>
+    </div>
+    <!-- Input de disciplina -->
+    <div>
+      <mdb-form-control class="bg-white rounded">
+        <input
+          mdbInput
+          mdbValidate
+          required
+          id="formControlDisabled"
+          type="text"
+          class="form-control active"
+          formControlName="course"
+        />
+        <label mdbLabel class="form-label" for="course" style="width: 5.7rem"
+          ><i class="fas fa-book me-2"></i>Disciplina</label
+        >
+      </mdb-form-control>
+      <div class="form-text">Exemplo: Português.</div>
+    </div>
+    <!-- Checkbox se é professor -->
+    <div class="form-check">
+      <input
+        mdbCheckbox
+        class="form-check-input"
+        type="checkbox"
+        id="flexCheckChecked"
+        [checked]="true"
+        formControlName="isTeacher"
+      />
+      <label class="form-check-label" for="flexCheckChecked">
+        Sou professor
+      </label>
+    </div>
+  </div>
+  <!-- Botao de enviar -->
+  <div>
+    <a
+      (click)="onSend()"
+      class="btn btn-dark d-flex justify-content-between align-items-center"
+      id="button-entrar"
+    >
+      ENTRAR <i class="fa-solid fa-arrow-right mx-0"></i>
+    </a>
+    <div class="col-3"></div>
+  </div>
+
+</form>

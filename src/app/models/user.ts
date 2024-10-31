@@ -7,7 +7,8 @@ export class User {
         public email: string,
         public role: string,
         public pictureUrl: string,
-        public courses: string[],
+        public subject: string,
+        public classes: string[],
         public jointIntensities: JointIntensity[]
     ){}
 }

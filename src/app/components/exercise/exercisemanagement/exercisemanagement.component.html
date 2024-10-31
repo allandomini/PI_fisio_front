@@ -19,7 +19,7 @@
               aria-controls="collapseFilter"
             >
               <i class="fas fa-filter fa-lg me-1"></i>
-              filter
+              filtrar
             </button>
 
             <button
@@ -29,7 +29,7 @@
               (click)="onNew()"
             >
               <i class="fas fa-plus fa-lg me-1"></i>
-              new
+              novo
             </button>
           </div>
 
@@ -38,14 +38,14 @@
             <div class="d-md-flex align-items-md-end flex-md-column">
 
               <div class="w-md-fit">
-                <h6>Filter by:</h6>
+                <h6>Filtrar por:</h6>
                 <form [formGroup]="filterForm">
                 <div
                   class="d-grid pt-2 
                   justify-content-md-end d-md-flex pt-md-1 gap-md-3"
                 >
                   <mat-form-field>
-                    <mat-label>Intensity</mat-label>
+                    <mat-label>Intensidade</mat-label>
                     <mat-select formControlName="intensities" (change)="onFilterChange(filterForm.value)" multiple>
                       @for (intensity of intensityOptions; track
                       intensityOptions) {
@@ -56,7 +56,7 @@
                     </mat-select>
                   </mat-form-field>
                   <mat-form-field>
-                    <mat-label>Joint</mat-label>
+                    <mat-label>Articulação</mat-label>
                     <mat-select formControlName="joints" (change)="onFilterChange(filterForm.value)" multiple>
                       @for (joint of jointOptions; track jointOptions) {
                       <mat-option [value]="joint.value">{{
@@ -69,7 +69,7 @@
                   <div class="align-self-center ">
                   <mdb-form-control>
                     <input mdbInput type="text" id="form1" formControlName="name" (input)="onFilterChange(filterForm.value)" class="form-control form-control-lg" />
-                    <label mdbLabel class="form-label" for="form1">Name</label>
+                    <label mdbLabel class="form-label" for="form1">Nome</label>
                   </mdb-form-control>
                   <div class="mat-mdc-form-field-subscript-wrapper mat-mdc-form-field-bottom-align"></div>
                 </div>

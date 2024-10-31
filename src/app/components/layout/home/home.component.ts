@@ -13,6 +13,6 @@ export class HomeComponent {
   constructor(private router: Router) {}
   description = "Métodos fisioterapêuticos para alívio e prevenção de dores em professores do Ensino Fundamental"
   onStart() {
-    this.router.navigate(['/google']);
+    this.router.navigate(['/login']);
   }
 }
