@@ -2,14 +2,15 @@ import { Intensity, Joint } from "./exercise";
 
 export class User {
     constructor(
-        public id: number,
-        public name: string,
-        public email: string,
-        public role: string,
-        public pictureUrl: string,
-        public subject: string,
-        public classes: string[],
-        public jointIntensities: JointIntensity[]
+        public id: number | null,
+        public name: string | null,
+        public email: string | null,
+        public dateOfBirth: string | null,
+        public role: string | null,
+        public pictureUrl: string | null ,
+        public subject: string | null,
+        public classes: string[] | null,
+        public jointIntensities: JointIntensity[] | null
     ){}
 }
 

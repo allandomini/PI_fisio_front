@@ -12,10 +12,11 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   let router = inject(Router);
 
   let token = localStorage.getItem('access_token');
-  if (token && 
-    !router.url.includes('/login') &&
-    !request.url.includes('/auth/refreshToken')
-  ){
+  if (
+    token &&
+    !router.url.endsWith('/login') &&
+    (!request.url.includes('/auth/refreshToken') || router.url.includes('/login/userinfo'))
+){
     request = request.clone({
       setHeaders: { Authorization: 'Bearer ' + token },
     });

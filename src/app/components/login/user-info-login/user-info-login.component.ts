@@ -6,8 +6,9 @@ import { User } from '../../../models/user';
 import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
-import { NgClass } from '@angular/common';
+import { formatDate, NgClass } from '@angular/common';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-user-info-login',
@@ -30,7 +31,8 @@ export class UserInfoLoginComponent {
 
   dateInput = '' 
   route = inject(Router)
-  user: User = new User(0,'','','','','',[],[]);
+  userService = inject(UserService);
+  user: User = new User(null,'', '', null, null, null, '', [], null);
 
   readonly chipClasses = signal<string[]>([]);
 
@@ -50,23 +52,21 @@ export class UserInfoLoginComponent {
     this.formGroup = new FormGroup({
       name: new FormControl('', Validators.required),
       classes: new FormControl('',  Validators.required),
-      course: new FormControl('',  Validators.required),
+      subject: new FormControl('',  Validators.required),
       date: new FormControl('',  Validators.required),
       isTeacher: new FormControl(true,  Validators.required),
     })
-
   }
 
   onIsTeacherChange(){
     if(this.isTeacher?.value){
       this.classes?.enable();
-      this.course?.enable();
+      this.subject?.enable();
     }
       else{ // Se o checkbox for false
         this.classes?.disable();
-        this.course?.disable();
+        this.subject?.disable();
     }
-
   }
 
   onBlurClasses(){ // Quando o input de classes perder o foco!
@@ -80,12 +80,11 @@ export class UserInfoLoginComponent {
     }
   }
 
-
   onSendCourse(){
     if (this.classes && this.classes.value) {
       const value = (this.classes.value || '').trim();
 
-      if (value && this.user.classes.length < 10) {
+      if (value && this.user.classes && this.user.classes.length < 10) {
         this.user.classes.push(this.classes?.value); 
         this.chipClasses.update(keywords => [...keywords, value]);
       }
@@ -102,7 +101,7 @@ export class UserInfoLoginComponent {
       if (index < 0) {
         return keywords;
       }
-      this.user.classes.splice(index,1)
+      this.user.classes?.splice(index,1)
       keywords.splice(index, 1);
       return [...keywords];
     });
@@ -110,18 +109,30 @@ export class UserInfoLoginComponent {
 
   onSend(){
     this.formGroup.markAllAsTouched();
+
+    this.user.name = this.name?.value
+    this.user.subject = this.subject?.value
+    this.user.dateOfBirth =  this.date?.value
     if(this.formGroup.valid){
-      this.route.navigate(['/form'])
-      // chamar backendd
+      this.userService.patchUpdate(this.user).subscribe({
+        next: response => {
+            this.route.navigate(['/form']);
+        },
+        error: err => {
+            console.error("Update failed:", err);
+        }
+    });
+
     }    
   }
+
   
   get name() {
     return this.formGroup.get('name');
   }
 
-  get course() {
-    return this.formGroup.get('course');
+  get subject() {
+    return this.formGroup.get('subject');
   }
 
   get classes() {
@@ -130,6 +141,9 @@ export class UserInfoLoginComponent {
 
   get isTeacher() {
     return this.formGroup.get('isTeacher');
+  }
+  get date() {
+    return this.formGroup.get('date');
   }
   get isTeacherValue(): boolean {
     return this.formGroup.get('isTeacher')?.value;
