@@ -10,7 +10,6 @@
   --mdb-btn-box-shadow-state: none !important;
 }
 
-
 .main-form{
   @media (min-width: 768px) {
     width: 30rem;
@@ -31,7 +30,6 @@ h3 {
   border-radius: 0.25rem;
 }
 
-
 .mat-mdc-chip {
   --mdc-chip-label-text-size: 13px;
 }
@@ -44,4 +42,15 @@ h3 {
 }
 .enabled-form{
   background-color: white !important;
+}
+
+.text-input{
+  padding-right: 0.25rem !important;
+  padding-left: 0.25rem !important;
+  padding-top: 0.25rem !important;
+}
+
+.no-animation{
+  transition: none !important;
+  animation: none !important;
 }

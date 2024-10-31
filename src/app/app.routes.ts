@@ -33,6 +33,7 @@ export const routes: Routes = [
     component: AdminComponent,
     canActivate: [AdminGuard],
     children: [
+      { path: '', redirectTo: 'exercise', pathMatch: 'full' },
       { path: 'exercise', component: ExerciseManagementComponent },
       { path: 'user', component: UserManagementComponent },
     ],

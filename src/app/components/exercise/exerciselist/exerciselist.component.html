@@ -4,11 +4,11 @@
       <tr>
         <th>Id</th>
         <th>Video Url</th>
-        <th>Name</th>
-        <th>Description</th>
-        <th>Reps</th>
-        <th>Intensity</th>
-        <th>Joint</th>
+        <th>Nome</th>
+        <th>Descrição</th>
+        <th>Repetições</th>
+        <th>Intensidade</th>
+        <th>Articulação</th>
         <th colspan="2" class="text-center">Ações</th>
       </tr>
     </thead>
@@ -25,26 +25,30 @@
         <td>{{ e.intensity }}</td>
         <td>{{ e.joint }}</td>
         <td>
-          <button
-            type="button"
-            class="btn btn-link btn-rounded btn-sm fw-bold"
-            mdbRipple
-            rippleColor="dark"
-            (click)="edit(e)"
-          >
-            Edit
-          </button>
+          <div class="d-grid">
+            <button
+              type="button"
+              class="btn btn-link btn-rounded btn-sm fw-bold"
+              mdbRipple
+              rippleColor="dark"
+              (click)="edit(e)"
+            >
+              Edit
+            </button>
+          </div>
         </td>
         <td>
-          <button
-            type="button"
-            class="btn btn-link btn-rounded btn-sm fw-bold"
-            mdbRipple
-            rippleColor="dark"
-            (click)="delete(e.id)"
-          >
-            Delete
-          </button>
+          <div class="d-grid">
+            <button
+              type="button"
+              class="btn btn-link btn-rounded btn-sm fw-bold"
+              mdbRipple
+              rippleColor="dark"
+              (click)="delete(e.id)"
+            >
+              Delete
+            </button>
+         </div>
         </td>
       </tr>
       }

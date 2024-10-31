@@ -7,6 +7,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import {MatIconModule} from '@angular/material/icon';
 import { MdbCheckboxModule } from 'mdb-angular-ui-kit/checkbox';
 import { NgClass } from '@angular/common';
+import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 
 @Component({
   selector: 'app-user-info-login',
@@ -18,6 +19,7 @@ import { NgClass } from '@angular/common';
     MatChipsModule,
     MatIconModule,
     MdbCheckboxModule,
+    MdbValidationModule,
     NgClass
   ],
   templateUrl: './user-info-login.component.html',
@@ -28,7 +30,7 @@ export class UserInfoLoginComponent {
 
   dateInput = '' 
   route = inject(Router)
-  user: User = new User(0,'','','','',[],[]);
+  user: User = new User(0,'','','','','',[],[]);
 
   readonly chipClasses = signal<string[]>([]);
 
@@ -64,6 +66,7 @@ export class UserInfoLoginComponent {
         this.classes?.disable();
         this.course?.disable();
     }
+
   }
 
   onBlurClasses(){ // Quando o input de classes perder o foco!
@@ -82,13 +85,13 @@ export class UserInfoLoginComponent {
     if (this.classes && this.classes.value) {
       const value = (this.classes.value || '').trim();
 
-      if (value && this.user.courses.length <= 10) {
-        this.user.courses.push(this.classes?.value); 
+      if (value && this.user.classes.length < 10) {
+        this.user.classes.push(this.classes?.value); 
         this.chipClasses.update(keywords => [...keywords, value]);
       }
 
       this.classes.reset()
-      console.log(this.user.courses)
+      console.log(this.user.classes)
 
     }
   }
@@ -99,14 +102,18 @@ export class UserInfoLoginComponent {
       if (index < 0) {
         return keywords;
       }
-      this.user.courses.splice(index,1)
+      this.user.classes.splice(index,1)
       keywords.splice(index, 1);
       return [...keywords];
     });
   }
 
   onSend(){
-    this.route.navigate(['/form']);
+    this.formGroup.markAllAsTouched();
+    if(this.formGroup.valid){
+      this.route.navigate(['/form'])
+      // chamar backendd
+    }    
   }
   
   get name() {

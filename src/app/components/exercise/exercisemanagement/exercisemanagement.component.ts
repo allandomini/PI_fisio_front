@@ -20,6 +20,13 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatSelectModule } from '@angular/material/select';
 import { MdbFormsModule } from 'mdb-angular-ui-kit/forms';
 import { ExerciseFilterDTO } from '../../../models/exercise-filter-dto';
+
+const intensityTranslations = {
+  HIGH: 'Alto',
+  MEDIUM: 'Médio',
+  LOW: 'Baixo'
+};
+
 @Component({
   selector: 'app-exercisemanagement',
   standalone: true,
