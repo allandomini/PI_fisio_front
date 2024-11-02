@@ -32,7 +32,7 @@ export class UserInfoLoginComponent {
   dateInput = '' 
   route = inject(Router)
   userService = inject(UserService);
-  user: User = new User(null,'', null, null, null, null, '', [], null);
+  user: User = new User(null,null, null, null, null, null, null, [], null);
 
   readonly chipClasses = signal<string[]>([]);
 

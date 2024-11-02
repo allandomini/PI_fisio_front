@@ -174,7 +174,7 @@ export class ExerciseManagementComponent {
       // Em caso de criação.
       this.exerciseService.save(exercise).subscribe({
         next: (value) => {
-          this.exercises.pop();
+          // this.exercises.pop();
           exercise.id = value.id;
           this.exercises.push(exercise);
 

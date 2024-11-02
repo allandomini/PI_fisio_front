@@ -20,12 +20,13 @@
     </div>
   </div>
 </header>
+
 <div class="container-fluid vh-100 d-flex justify-content-center">
   <mat-tab-group class="w-100">
-    <mat-tab
-      *ngFor="let exercise of selectedExercises"
-      [label]="exercise.joint"
-    >
+    @for (region of selectedRegions; track $index) {
+    <mat-tab [label]="region">
+      @for (exercise of selectedExercises; track $index) { 
+        @if(exercise.joint === region){
       <div class="container-fluid py-5">
         <div class="row">
           <div
@@ -34,7 +35,7 @@
             <iframe
               width="560"
               height="315"
-              [src]="exercise.videoUrl"
+              [src]="exercise.embedUrl"
               title="YouTube video player"
               frameborder="0"
               allow="accelerometer;
@@ -50,6 +51,8 @@
           </div>
         </div>
       </div>
+      } }
     </mat-tab>
+    }
   </mat-tab-group>
 </div>

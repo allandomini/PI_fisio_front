@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { SelectionService } from '../../../services/selection.service';
@@ -18,7 +18,6 @@ export class ResultComponent implements OnInit {
   selectedRegions: string[] = [];
   selectedExercises: any[] = [];
   
-
   // Mapeamento de nomes para português
   private regionMap: { [key: string]: string } = {
     CERVICAL: 'Cervical',
@@ -36,6 +35,8 @@ export class ResultComponent implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.selectedRegions = this.selectionService.getSelectedRegions();
+
     this.selectedRegions = this.selectionService
       .getSelectedRegions()
       .map((region) => this.regionMap[region] || region);
@@ -45,8 +46,9 @@ export class ResultComponent implements OnInit {
       .map((exercise: any) => ({
         ...exercise,  
         joint: this.regionMap[exercise.joint] || exercise.joint, // Traduza a região aqui
-        videoUrl: this.transformToEmbedUrl(exercise.videoUrl),
+        embedUrl: this.transformToEmbedUrl(exercise.videoUrl),
       }));
+      console.log(this.selectedExercises)
   }
   
   private transformToEmbedUrl(url: string): SafeResourceUrl {
