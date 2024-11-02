@@ -4,12 +4,13 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { SelectionService } from '../../../services/selection.service';
 import { Router } from '@angular/router';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { SafeUrlPipe } from './safe-url.pipe'; // Import SafeUrlPipe
+import { SafeUrlPipe } from './safe-url.pipe';
+import { HeaderComponent } from "../../header/header.component"; // Import SafeUrlPipe
 
 @Component({
   selector: 'app-result',
   standalone: true,
-  imports: [CommonModule, MatTabsModule, SafeUrlPipe],
+  imports: [CommonModule, MatTabsModule, SafeUrlPipe, HeaderComponent],
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.scss'],
 })
