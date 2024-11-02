@@ -16,6 +16,7 @@ import { SafeUrlPipe } from './safe-url.pipe'; // Import SafeUrlPipe
 export class ResultComponent implements OnInit {
   selectedRegions: string[] = [];
   selectedExercises: any[] = [];
+  
 
   // Mapeamento de nomes para português
   private regionMap: { [key: string]: string } = {
@@ -37,23 +38,32 @@ export class ResultComponent implements OnInit {
     this.selectedRegions = this.selectionService
       .getSelectedRegions()
       .map((region) => this.regionMap[region] || region);
-
+  
     this.selectedExercises = this.selectionService
       .getSelectedExercises()
-      .map((exercise: any) => {
-        return {
-          exercise,
-          joint: this.regionMap[exercise.joint] || exercise.joint, // Traduza a região aqui
-          videoUrl: this.transformToEmbedUrl(exercise.videoUrl),
-        };
-      });
+      .map((exercise: any) => ({
+        ...exercise,  
+        joint: this.regionMap[exercise.joint] || exercise.joint, // Traduza a região aqui
+        videoUrl: this.transformToEmbedUrl(exercise.videoUrl),
+      }));
   }
-
+  
   private transformToEmbedUrl(url: string): SafeResourceUrl {
-    const videoId = url.split('v=')[1]; // Extract video ID from URL
-    const embedUrl = `https://www.youtube.com/embed/${videoId}`; // Convert to embed format
-    return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl); // Sanitize URL
+    let videoId: string | undefined;
+    if (url.includes('youtube.com')) { //verifica se ta no dominio do you
+      videoId = url.split('v=')[1]?.split('&')[0]; //se a url tiver certa ela vai extrair a partir vo v ali
+      //o split vai divir em duas partes, o 1 seleciona a parte após o v= onde o ID do video inicia
+      // o split('&')[0] serve para separar qlqr outro parametro q venha apos o ID
+    } else if (url.includes('youtu.be')) { //ve o dominio
+      videoId = url.split('/').pop();// divide a URL em segmentos usando a barra como delimitador e retorna o último segmento, que é o ID do vídeo.
+    }
+    if (videoId) {
+      const embedUrl = `https://www.youtube.com/embed/${videoId}`; //se extrair com sucesso ai vai pegar o ID do video  e após retorna para o angular uma URL segura
+      return this.sanitizer.bypassSecurityTrustResourceUrl(embedUrl);
+    }
+    return this.sanitizer.bypassSecurityTrustResourceUrl(''); // se o video n ser encontrado vai retornar a URL vazia ^^
   }
+  
 
   message() {
     const back = confirm('Tem certeza que deseja voltar ao início?');
