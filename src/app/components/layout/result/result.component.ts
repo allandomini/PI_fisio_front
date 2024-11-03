@@ -49,6 +49,7 @@ export class ResultComponent implements OnInit {
         embedUrl: this.transformToEmbedUrl(exercise.videoUrl),
       }));
       console.log(this.selectedExercises)
+
   }
   
   private transformToEmbedUrl(url: string): SafeResourceUrl {

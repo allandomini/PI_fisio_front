@@ -5,6 +5,8 @@ import { User } from '../models/user';
 import { Observable } from 'rxjs';
 import { UserPage } from '../models/user-page';
 import { JsonPipe } from '@angular/common';
+import { ExerciseFilterDTO } from '../models/exercise-filter-dto';
+import { Intensity, Joint } from '../models/exercise';
 
 @Injectable({
   providedIn: 'root'
@@ -19,5 +21,9 @@ export class UserService {
   patchUpdate(user: User): Observable<User>{
     return this.http.patch<User>(this.api, user, {responseType: 'json'});
   }
+
+  
+  
+  
   constructor() { }
 }

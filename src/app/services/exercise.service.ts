@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { environment } from '../environments/enviroment';
-import { Exercise } from '../models/exercise';
+import { Exercise, Intensity, Joint } from '../models/exercise';
 import { Observable } from 'rxjs';
 import { ExercisePage } from '../models/exercise-page';
 import { ExerciseFilterDTO } from '../models/exercise-filter-dto';
@@ -61,6 +61,10 @@ export class ExerciseService {
     };
 
     return this.http.get<Exercise[]>(url, { params });
+  }
+
+  getExercisesByJointAndIntensity(joint: Joint, intensity: Intensity): Observable<ExerciseFilterDTO[]> {
+    return this.http.get<ExerciseFilterDTO[]>(`${this.api}/findByJointAndIntensity?joint=${joint}&intensity=${intensity}`);
   }
 
   constructor() {}
