@@ -8,11 +8,12 @@ import { forkJoin, Observable } from 'rxjs';
 import { JointIntensity, User } from '../../../models/user';
 import { UserService } from '../../../services/user.service';
 import { Intensity, Joint } from '../../../models/exercise';
+import { FlowersComponent } from "../../flowers/flowers.component";
 
 @Component({
   selector: 'app-form-intensidade',
   standalone: true,
-  imports: [HttpClientModule, CommonModule],
+  imports: [HttpClientModule, CommonModule, FlowersComponent],
   templateUrl: './form-intensidade.component.html',
   styleUrls: ['./form-intensidade.component.scss'],
 })

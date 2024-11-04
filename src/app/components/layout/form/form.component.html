@@ -1,97 +1,107 @@
-<div class="body-form">
-  <div class="">
-    <div
-      class="d-flex flex-column align-items-center justify-content-center text-center"
-      style="padding-left: 10%; padding-right: 10%; height: 350px"
-    >
-      <h2 class="mb-4">Selecione as regiões em que sente dor</h2>
+<div class="position-relative overflow-hidden justify-content-center">
+  <app-flowers customClass="flower"></app-flowers>
+  <div class="body-form">
+    <div class="">
+      <div
+        class="d-flex flex-column align-items-center justify-content-center text-center"
+        style="padding-left: 10%; padding-right: 10%; height: 350px"
+      >
+        <div class="logo-container">
+          <img
+            class="img-fluid w-50"
+            src="../../../../assets/Saude_Ensino.jpeg"
+            alt=""
+          />
+        </div>
 
-      <!-- Grupo de botões 1 -->
-      <div class="btn-group mb-3" role="group">
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Cervical'] }"
-          (click)="exercicio1('Cervical')"
-        >
-          Cervical
-        </button>
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Ombro'] }"
-          (click)="exercicio1('Ombro')"
-        >
-          Ombro
-        </button>
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Lombar'] }"
-          (click)="exercicio1('Lombar')"
-        >
-          Lombar
-        </button>
+        <h2 class="mb-4">Selecione as regiões em que sente dor</h2>
+
+        <!-- Grupo de botões 1 -->
+        <div class="btn-group mb-3" role="group">
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Cervical'] }"
+            (click)="exercicio1('Cervical')"
+          >
+            Cervical
+          </button>
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Ombro'] }"
+            (click)="exercicio1('Ombro')"
+          >
+            Ombro
+          </button>
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Lombar'] }"
+            (click)="exercicio1('Lombar')"
+          >
+            Lombar
+          </button>
+        </div>
+
+        <!-- Grupo de botões 2 -->
+        <div class="btn-group mb-4" role="group">
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Joelho'] }"
+            (click)="exercicio1('Joelho')"
+          >
+            Joelho
+          </button>
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Tornozelo'] }"
+            (click)="exercicio1('Tornozelo')"
+          >
+            Tornozelo
+          </button>
+          <button
+            mat-raised-button
+            type="button"
+            class="btn"
+            [ngClass]="{ 'btn-active': buttonStates['Quadril'] }"
+            (click)="exercicio1('Quadril')"
+          >
+            Quadril
+          </button>
+        </div>
+
+        <!-- Checkbox -->
+        <div class="form-check mb-2">
+          <input
+            formControlName="subject"
+            class="form-check-input"
+            type="checkbox"
+            value=""
+            id="flexCheckChecked"
+            checked
+          />
+          <label class="form-check-label" for="flexCheckChecked">
+            Receber exercícios preventivos dos demais
+          </label>
+        </div>
       </div>
 
-      <!-- Grupo de botões 2 -->
-      <div class="btn-group mb-4" role="group">
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Joelho'] }"
-          (click)="exercicio1('Joelho')"
-        >
-          Joelho
-        </button>
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Tornozelo'] }"
-          (click)="exercicio1('Tornozelo')"
-        >
-          Tornozelo
-        </button>
-        <button
-          mat-raised-button
-          type="button"
-          class="btn"
-          [ngClass]="{ 'btn-active': buttonStates['Quadril'] }"
-          (click)="exercicio1('Quadril')"
-        >
-          Quadril
+      <div
+        class="d-flex align-items-center justify-content-center text-center"
+        style="height: 350px"
+      >
+        <button type="button" class="btn btn-primary" (click)="enviar()">
+          ENVIAR
         </button>
       </div>
-
-      <!-- Checkbox -->
-      <div class="form-check mb-2">
-        <input
-         formControlName="subject"
-          class="form-check-input"
-          type="checkbox"
-          value=""
-          id="flexCheckChecked"
-          checked
-        />
-        <label class="form-check-label" for="flexCheckChecked">
-          Receber exercícios preventivos dos demais
-        </label>
-      </div>
-    </div>
-
-    <div
-      class="d-flex align-items-center justify-content-center text-center"
-      style="height: 350px"
-    >
-    <button type="button" class="btn btn-primary" (click)="enviar()">
-      ENVIAR
-      </button>
     </div>
   </div>
 </div>
-

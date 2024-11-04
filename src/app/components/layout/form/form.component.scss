@@ -19,3 +19,14 @@
   box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
   transition: all 0.3s ease;
 }
+
+.logo-container {
+  margin-top: 10%;
+  width: auto;
+  height: auto;
+
+  @media (min-width: 768px) {
+    width: auto;
+    height: auto;
+  }
+}
