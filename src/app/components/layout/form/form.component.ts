@@ -51,4 +51,13 @@ export class FormComponent {
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {});
   }
+
+  message() {
+    let back = confirm('Tem certeza que deseja voltar ao início?');
+    if (back == true) {
+      this.router.navigate(['/home']);
+    } else{
+      return;
+    }
+  }
 }
