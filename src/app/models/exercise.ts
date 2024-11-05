@@ -21,6 +21,6 @@ export enum Joint {
     Cervical = 'CERVICAL',
     Hip = 'HIP',
     Knee = 'KNEE',
-    LowerBack = 'LOWERBACK',
+    Lowerback = 'LOWERBACK',
     Shoulder = 'SHOULDER'
 }

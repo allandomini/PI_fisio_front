@@ -22,8 +22,9 @@ export class UserService {
     return this.http.patch<User>(this.api, user, {responseType: 'json'});
   }
 
-  
-  
+  getInfo(): Observable<User>{
+    return this.http.get<User>(`${this.api}/info`, {responseType: 'json'} );
+  }
   
   constructor() { }
 }

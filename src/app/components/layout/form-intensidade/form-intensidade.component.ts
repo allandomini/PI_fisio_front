@@ -45,7 +45,11 @@ export class FormIntensidadeComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.selectedRegions = this.selectionService.getSelectedRegions();
+    if(this.selectionService.getSelectedRegions().length > 0){
+      this.selectedRegions = this.selectionService.getSelectedRegions();
+    }else{
+      this.router.navigate(['']);
+    }
   }
 
   onCheckboxChange(event: any, region: string, level: string): void {
@@ -79,21 +83,12 @@ export class FormIntensidadeComponent implements OnInit {
       requests.push(exerciseRequest);
     });
 
+    // dps do mapeamento de jointIntensities, inserindo na service p/ ser usado no resultcomponent
+    this.selectionService.setJointIntensities(this.user.jointIntensities || []);
+
     this.userService.patchUpdate(this.user).subscribe({
       next: (response) => {
-        if (requests.length > 0) {
-          forkJoin(requests).subscribe({
-            next: (responses: any[]) => {
-              const allExercises = responses.flat();
-              this.selectionService.setSelectedExercises(allExercises);
-              this.router.navigate(['/result']);
-              console.log('Exercise responses:', responses);
-            },
-            error: (err) => {
-              console.error('Error fetching exercises:', err);
-            },
-          });
-        }
+        this.router.navigate(['/result']);
       },
       error: (err) => {
         console.error('Error updating user:', err);

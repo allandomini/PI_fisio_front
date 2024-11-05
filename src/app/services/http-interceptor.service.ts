@@ -14,7 +14,7 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
   let token = localStorage.getItem('access_token');
   if (
     token &&
-    !router.url.endsWith('/login') &&
+    !request.url.includes('/auth/login') &&
     (!request.url.includes('/auth/refreshToken') || router.url.includes('/login/userinfo'))
 ){
     request = request.clone({
@@ -33,7 +33,7 @@ export const meuhttpInterceptor: HttpInterceptorFn = (request, next) => {
           authService.refresh(refresh_token).subscribe({
               next: a  => {
                 authService.setAuthToken({accessToken: a.accessToken, refreshToken: a.refreshToken});
-                window.location.reload()
+                window.location.reload() 
               },
               error: err =>{
                 authService.logout();

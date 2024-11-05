@@ -66,6 +66,9 @@ export class UserInfoLoginComponent {
       else{ // Se o checkbox for false
         this.classes?.disable();
         this.subject?.disable();
+        this.user.classes = null;
+        this.user.subject = null;
+
     }
   }
 

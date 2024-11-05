@@ -176,7 +176,7 @@ export class ExerciseManagementComponent {
         next: (value) => {
           // this.exercises.pop();
           exercise.id = value.id;
-          this.exercises.push(exercise);
+          // this.exercises.push(exercise);
 
           this.openSnackBar('Exercise has been saved successfully!', 'Close');
           this.modalRef.close();
