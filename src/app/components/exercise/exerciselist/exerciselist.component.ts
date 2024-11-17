@@ -1,5 +1,5 @@
 import { Component, EventEmitter, inject, Input, input, Output, TemplateRef, viewChild, ViewChild } from '@angular/core';
-import { Exercise } from '../../../models/exercise';
+import { Exercise, Intensity, IntensityPTBR, Joint, JointPTBR } from '../../../models/exercise';
 import { ExercisedetailsComponent } from '../exercisedetails/exercisedetails.component';
 import { RouterLink } from '@angular/router';
 import { MdbModalModule, MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -33,6 +33,13 @@ export class ExerciselistComponent {
       this.exercises.splice(index, 1);
     
       this.deleteEvent.emit(id);
+    }
+
+    getJointPTBR(joint: Joint | null): string {
+      return JointPTBR[joint as keyof typeof JointPTBR];
+    }
+    getIntensityPTBR(intensity: Intensity | null): string {
+      return IntensityPTBR[intensity as keyof typeof IntensityPTBR];
     }
 
 }

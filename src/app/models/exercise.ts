@@ -15,6 +15,11 @@ export enum Intensity {
     Medium = 'MEDIUM',
     Low = 'LOW'
 }
+export enum IntensityPTBR {
+    HIGH ='Intensa',
+    MEDIUM ='Moderada',
+    LOW = 'Leve',
+}
 
 export enum Joint {
     Ankle = 'ANKLE',
@@ -24,3 +29,12 @@ export enum Joint {
     Lowerback = 'LOWERBACK',
     Shoulder = 'SHOULDER'
 }
+
+export enum JointPTBR {
+    CERVICAL = 'Cervical',
+    SHOULDER = 'Ombro',
+    LOWERBACK ='Lombar',
+    KNEE ='Joelho',
+    ANKLE ='Tornozelo',
+    HIP = 'Quadril',
+  };

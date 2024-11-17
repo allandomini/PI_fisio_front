@@ -22,8 +22,8 @@
         <td>{{ e.name }}</td>
         <td>{{ e.description }}</td>
         <td>{{ e.reps }}</td>
-        <td>{{ e.intensity }}</td>
-        <td>{{ e.joint }}</td>
+        <td>{{ getIntensityPTBR(e.intensity)}}</td>
+        <td>{{ getJointPTBR(e.joint)}}</td>
         <td>
           <div class="d-grid">
             <button

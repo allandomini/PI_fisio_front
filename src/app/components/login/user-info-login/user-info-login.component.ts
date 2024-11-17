@@ -66,8 +66,8 @@ export class UserInfoLoginComponent {
       else{ // Se o checkbox for false
         this.classes?.disable();
         this.subject?.disable();
-        this.user.classes = null;
-        this.user.subject = null;
+        // this.user.classes = null;
+        // this.user.subject = null;
 
     }
   }
@@ -116,6 +116,12 @@ export class UserInfoLoginComponent {
     this.user.name = this.name?.value
     this.user.subject = this.subject?.value
     this.user.dateOfBirth =  this.date?.value
+
+    if(!this.isTeacher?.value){
+      this.user.classes = null;
+      this.user.subject = null;
+    }
+
     if(this.formGroup.valid){
       this.userService.patchUpdate(this.user).subscribe({
         next: response => {

@@ -1,6 +1,6 @@
 import { Component, inject, TemplateRef, ViewChild } from '@angular/core';
 import { ExerciselistComponent } from '../exerciselist/exerciselist.component';
-import { Exercise, Intensity, Joint } from '../../../models/exercise';
+import { Exercise, Intensity, IntensityPTBR, Joint, JointPTBR } from '../../../models/exercise';
 import { ExerciseService } from '../../../services/exercise.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MdbModalRef, MdbModalService } from 'mdb-angular-ui-kit/modal';
@@ -73,13 +73,13 @@ export class ExerciseManagementComponent {
   // Objetos utilizados nos selects.
   intensityOptions = Object.keys(Intensity).map((key) => ({
     value: Intensity[key as keyof typeof Intensity],
-    viewValue: Intensity[key as keyof typeof Intensity],
+    viewValue: IntensityPTBR[Intensity[key as keyof typeof Intensity] as keyof typeof IntensityPTBR],
   }));
 
   jointOptions = Object.keys(Joint).map((key) => ({
     value: Joint[key as keyof typeof Joint],
-    viewValue: Joint[key as keyof typeof Joint],
-  }));
+    viewValue: JointPTBR[Joint[key as keyof typeof Joint] as keyof typeof JointPTBR], // Valor do enum em ptbr
+}));
   //--
 
   constructor() {
@@ -137,6 +137,7 @@ export class ExerciseManagementComponent {
     this.exerciseService.delete(id).subscribe({
       next: (value) => {
         this.openSnackBar('Exercise has been deleted successfully!', 'Close');
+        this.refresh({length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize });
       },
       error: (error) => {
         this.openSnackBar(error.error, 'Close');
@@ -163,6 +164,7 @@ export class ExerciseManagementComponent {
           });
           this.exercises[index] = exercise;
 
+          this.refresh({length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize });
           this.openSnackBar('Exercise has been updated successfully!', 'Close');
           this.modalRef.close();
         },
@@ -179,6 +181,7 @@ export class ExerciseManagementComponent {
           // this.exercises.push(exercise);
 
           this.openSnackBar('Exercise has been saved successfully!', 'Close');
+          this.refresh({length: 0, pageIndex: this.pageIndex, pageSize: this.pageSize });
           this.modalRef.close();
         },
         error: (error) => {

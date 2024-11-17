@@ -12,7 +12,7 @@ import {
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { Exercise, Intensity, Joint } from '../../../models/exercise';
+import { Exercise, Intensity, IntensityPTBR, Joint, JointPTBR } from '../../../models/exercise';
 import { NgFor, NgIf } from '@angular/common';
 import { MdbValidationModule } from 'mdb-angular-ui-kit/validation';
 @Component({
@@ -41,13 +41,13 @@ export class ExercisedetailsComponent {
   // Objetos utilizados nos selects.
   intensityOptions = Object.keys(Intensity).map((key) => ({
     value: Intensity[key as keyof typeof Intensity],
-    viewValue: Intensity[key as keyof typeof Intensity],
+    viewValue: IntensityPTBR[Intensity[key as keyof typeof Intensity] as keyof typeof IntensityPTBR],
   }));
 
   jointOptions = Object.keys(Joint).map((key) => ({
     value: Joint[key as keyof typeof Joint],
-    viewValue: Joint[key as keyof typeof Joint],
-  }));
+    viewValue: JointPTBR[Joint[key as keyof typeof Joint] as keyof typeof JointPTBR], // Valor do enum em ptbr
+}));
 
   intensityControl = new FormControl(this.exercise.intensity, Validators.required);
   jointControl = new FormControl(this.exercise.joint, Validators.required);
@@ -81,9 +81,11 @@ export class ExercisedetailsComponent {
     // Escuta as mudanças nas controls dos selects e atualiza o objeto exercise.
     this.intensityControl.valueChanges.subscribe((value) => {
       this.exercise.intensity = value;
+      console.log(value)
     });
     this.jointControl.valueChanges.subscribe((value) => {
       this.exercise.joint = value;
+      console.log(value)
     });
     // --
   }

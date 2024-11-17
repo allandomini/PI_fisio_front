@@ -92,7 +92,7 @@
           <mat-form-field>
             <mat-label>Intensidade</mat-label>
             <mat-select [formControl]="intensityControl" required>
-              <mat-option>Select an intensity</mat-option>
+              <mat-option>Selecione a intensidade</mat-option>
               <mat-option *ngFor="let i of intensityOptions" [value]="i.value">
                 {{ i.viewValue }}
               </mat-option>
@@ -104,7 +104,7 @@
           <mat-form-field>
             <mat-label>Articulação</mat-label>
             <mat-select [formControl]="jointControl" required>
-              <mat-option>Select a joint</mat-option>
+              <mat-option>Selecione a articulação</mat-option>
               <mat-option *ngFor="let j of jointOptions" [value]="j.value">{{
                 j.viewValue
               }}</mat-option>
