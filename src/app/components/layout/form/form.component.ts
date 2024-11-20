@@ -49,7 +49,7 @@ export class FormComponent {
   }
 
   openSnackBar(message: string, action: string) {
-    this.snackBar.open(message, action, {});
+    this.snackBar.open(message, action, {duration: 600},);
   }
 
   message() {

@@ -14,14 +14,14 @@
           />
         </div>
 
-        <h2 class="mb-4">Selecione as regiões em que sente dor</h2>
+        <h2 class="mb-5 text-black">Selecione as regiões em que sente dor:</h2>
 
         <!-- Grupo de botões 1 -->
-        <div class="btn-group mb-3" role="group">
+        <div class="btn-group mb-3 rounded-pill" role="group">
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Cervical'] }"
             (click)="exercicio1('Cervical')"
           >
@@ -30,7 +30,7 @@
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Ombro'] }"
             (click)="exercicio1('Ombro')"
           >
@@ -39,7 +39,7 @@
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Lombar'] }"
             (click)="exercicio1('Lombar')"
           >
@@ -48,11 +48,11 @@
         </div>
 
         <!-- Grupo de botões 2 -->
-        <div class="btn-group mb-4" role="group">
+        <div class="btn-group mb-4 rounded-pill" role="group">
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Joelho'] }"
             (click)="exercicio1('Joelho')"
           >
@@ -61,7 +61,7 @@
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Tornozelo'] }"
             (click)="exercicio1('Tornozelo')"
           >
@@ -70,7 +70,7 @@
           <button
             mat-raised-button
             type="button"
-            class="btn"
+            class="btn btn-select"
             [ngClass]="{ 'btn-active': buttonStates['Quadril'] }"
             (click)="exercicio1('Quadril')"
           >
@@ -98,9 +98,13 @@
         class="d-flex align-items-center justify-content-center text-center"
         style="height: 350px"
       >
-        <button type="button" class="btn btn-primary" (click)="enviar()">
-          ENVIAR
-        </button>
+      <button
+      type="button"
+      class="btn btn-dark mt-3 mb-5 btn-submit"
+      (click)="enviar()"
+    >
+      CONTINUAR
+    </button>
       </div>
     </div>
   </div>
