@@ -1,0 +1,44 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel"></h5>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="modalRef.close()"
+  ></button>
+</div>
+<div class="modal-body">DESEJA REFAZER O FORMULÁRIO?</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="navigateToStart()"
+    style="
+      background-color: #785946;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    "
+    onmouseover="this.style.backgroundColor='#553f31'; this.style.color='#FFFFFF';"
+    onmouseout="this.style.backgroundColor='#785946'; this.style.color='#FFFFFF';"
+  >
+    REFAZER FORMULÁRIO
+  </button>
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="navigateToResult()"
+    style="
+      background-color: #785946;
+      color: #ffffff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    "
+    onmouseover="this.style.backgroundColor='#553f31'; this.style.color='#FFFFFF';"
+    onmouseout="this.style.backgroundColor='#785946'; this.style.color='#FFFFFF';"
+  >
+    IR PARA O RESULTADO
+  </button>
+</div>

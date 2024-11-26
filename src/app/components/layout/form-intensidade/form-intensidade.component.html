@@ -1,3 +1,7 @@
+<link
+rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+/>
 <div class="body-form">
   <div class="container-fluid w-100 h-100">
     <div class="row w-100 h-100">
@@ -67,14 +71,24 @@
             </div>
           </div>
         }
+          <div class="row d-flex justify-content-center gap-3 ">
           <!-- Botão de Enviar -->
           <button
+          type="button"
+          class="btn btn-dark"
+          (click)="voltar()"
+        >
+        <i class="fa-solid fa-arrow-left d-flex justify-content-center "></i> VOLTAR
+        </button>
+          <button
             type="button"
-            class="btn btn-dark mt-3 mb-5"
+            class="btn btn-dark  "
             (click)="submitSelection()"
+            style="background-color: #785946; color: #ffffff; "
           >
-            ENVIAR
+          <i class="fa-solid fa-arrow-right d-flex justify-content-center" ></i>  ENVIAR
           </button>
+        </div>
         </div>
       </div>
       <div class="col-1 col-md-2 col-xl-3"></div>

@@ -46,6 +46,7 @@ export class ResultComponent implements OnInit {
 
   ngOnInit() {
     // se for redirecionado (login ou form)
+   
     if (this.selectionService.getJointIntensities().length > 0) {
       this.jointIntensities = this.selectionService.getJointIntensities();
       this.selectedRegions = this.selectionService
@@ -74,6 +75,7 @@ export class ResultComponent implements OnInit {
     } else {
       this.router.navigate(['/login']);
     }
+   
   }
 
   private transformToEmbedUrl(url: string): SafeResourceUrl {

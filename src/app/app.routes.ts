@@ -11,6 +11,7 @@ import { FormIntensidadeComponent } from './components/layout/form-intensidade/f
 import { UserInfoLoginComponent } from './components/login/user-info-login/user-info-login.component';
 import { MainLoginComponent } from './components/login/main-login/main-login.component';
 import { LoginGoogleComponent } from './components/login/login-google/login-google.component';
+import { ModalComponent } from './modal/modal.component';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,10 @@ export const routes: Routes = [
     children: [
       { path: '', component: HomeComponent },
       { path: 'form', component: FormComponent },
-      { path: 'result', component: ResultComponent },
+      { path: 'result', component: ResultComponent , children:[
+        { path: 'modal', component: ModalComponent},
+      ]},
+     
       { path: 'form-intensidade', component: FormIntensidadeComponent },
       { path: 'login', component: MainLoginComponent, children:
         [

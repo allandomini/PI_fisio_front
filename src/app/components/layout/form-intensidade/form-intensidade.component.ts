@@ -95,4 +95,8 @@ export class FormIntensidadeComponent implements OnInit {
       },
     });
   }
+
+  voltar(){
+    this.router.navigate(['/login/userinfo']);
+  }
 }

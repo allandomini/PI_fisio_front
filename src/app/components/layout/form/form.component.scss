@@ -2,11 +2,17 @@
   border-radius: 20px;
   font-size: 18px;
   transition: all 0.3s ease;
-  color: black;
+  // color: black;
 }
+
 .btn-submit{
   font-size: 16px;
   width: 13rem;
+}
+
+.btn-submit:hover{
+  animation: heartBeat;
+  animation-duration: 2s;
 }
 .body-form {
   background-image: url(../../../../assets/image.png);
@@ -30,9 +36,12 @@
   height: auto;
 
   @media (min-width: 768px) {
+    
     width: auto;
     height: auto;
   }
+
+ 
 
   .logo{
     cursor: pointer;

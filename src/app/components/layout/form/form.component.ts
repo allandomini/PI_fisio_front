@@ -48,6 +48,9 @@ export class FormComponent {
     }
   }
 
+  voltar(){
+    this.router.navigate(['/login/userinfo']);
+  }
   openSnackBar(message: string, action: string) {
     this.snackBar.open(message, action, {duration: 600},);
   }

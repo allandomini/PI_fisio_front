@@ -43,4 +43,8 @@
 .btn{
   font-size: 16px;
   width: 13rem;
+  
 }
+
+.btn:hover{animation: heartBeat;
+  animation-duration: 2s;}
