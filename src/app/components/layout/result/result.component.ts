@@ -138,4 +138,9 @@ export class ResultComponent implements OnInit {
     //   .getSelectedRegions()
     //   .map((region) => this.regionMap[region] || region);
   }
+
+
+  backToHome(){
+    this.router.navigate(['/form']);
+  }
 }
